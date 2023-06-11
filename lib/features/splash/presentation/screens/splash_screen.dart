@@ -57,7 +57,9 @@ class _SplashScreenState extends State<SplashScreen>
     return Scaffold(
       body: Column(
         children: [
-          Image.asset(ImageAssets.topcircleImage),
+          Container(
+              alignment: Alignment.topLeft,
+              child: Image.asset(ImageAssets.topcircleImage)),
           Expanded(
               child: Center(
             child: Hero(
@@ -70,7 +72,7 @@ class _SplashScreenState extends State<SplashScreen>
             ),
           )),
           Container(
-            alignment: Alignment.bottomLeft,
+            alignment: Alignment.bottomRight,
             width: MediaQuery.of(context).size.width,
             child: Image.asset(ImageAssets.bottomcircleImage,
                 fit: BoxFit.fitWidth),
