@@ -4,11 +4,14 @@ import 'package:trg/features/splash/presentation/screens/splash_screen.dart';
 
 
 import '../../core/utils/app_strings.dart';
+import '../../features/choose_type/screens/choose_type.dart';
+import '../../features/login/screen/login.dart';
 
 
 class Routes {
   static const String initialRoute = '/';
   static const String loginRoute = '/login';
+  static const String chooseTypeRoute = '/chooseType';
   static const String paperexamRegisterRoute = '/paperexamRegister';
   static const String paperdetialsexamRegisterRoute = '/paperdetailsexamRegister';
   static const String homePageScreenRoute = '/homePageScreen';
@@ -28,7 +31,14 @@ class AppRoutes {
     switch (settings.name) {
       case Routes.initialRoute:
         return MaterialPageRoute(
-          builder: (context) => const SplashScreen(),
+         // builder: (context) => const SplashScreen(),
+          builder: (context) => const ChooseType(),
+        );
+      case Routes.chooseTypeRoute:
+        return MaterialPageRoute(builder: (context) => const ChooseType(),
+        );
+      case Routes.loginRoute:
+        return MaterialPageRoute(builder: (context) => const Login(),
         );
       // case Routes.loginRoute:
       //   return MaterialPageRoute(
