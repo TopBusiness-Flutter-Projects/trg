@@ -23,6 +23,8 @@ import 'core/utils/toast_message_method.dart';
 
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
+import 'features/onboarding/cubit/on_boarding_cubit.dart';
+
 class Elmazoon extends StatefulWidget {
   const Elmazoon({Key? key}) : super(key: key);
 
@@ -131,11 +133,11 @@ class _ElmazoonState extends State<Elmazoon> {
       EasyLocalization.of(context)!.locale.languageCode,
     );
     return
-      // MultiBlocProvider(
-      // providers: [
-      //   BlocProvider(
-      //     create: (_) => injector.serviceLocator<SplashCubit>(),
-      //   ),
+      MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => injector.serviceLocator<OnBoardingCubit>(),
+        ),
       //   BlocProvider(
       //     create: (_) => injector.serviceLocator<LoginCubit>(),
       //   ),
@@ -175,8 +177,8 @@ class _ElmazoonState extends State<Elmazoon> {
       //   BlocProvider(
       //     create: (_) => injector.serviceLocator<ExamHeroCubit>(),
       //   ),
-      // ],
-      // child:
+       ],
+       child:
       GetMaterialApp(
         supportedLocales: context.supportedLocales,
         locale: context.locale,
@@ -188,6 +190,6 @@ class _ElmazoonState extends State<Elmazoon> {
         title: AppStrings.appName,
         onGenerateRoute: AppRoutes.onGenerateRoute,
 
-    );
+    ));
   }
 }

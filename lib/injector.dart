@@ -7,6 +7,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
+import 'features/onboarding/cubit/on_boarding_cubit.dart';
+
 
 final serviceLocator = GetIt.instance;
 
@@ -14,7 +16,9 @@ Future<void> setup() async {
   //! Features
 
   ///////////////////////// Blocs ////////////////////////
-
+  serviceLocator.registerFactory(
+        () => OnBoardingCubit(),
+  );
 
   ///////////////////////////////////////////////////////////////////////////////
 

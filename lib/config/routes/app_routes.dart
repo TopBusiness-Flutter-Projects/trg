@@ -4,6 +4,7 @@ import 'package:trg/features/splash/presentation/screens/splash_screen.dart';
 
 
 import '../../core/utils/app_strings.dart';
+import '../../features/onboarding/screens/onboarding_screen.dart';
 import '../../features/choose_type/screens/choose_type.dart';
 import '../../features/login/screen/login.dart';
 
@@ -31,14 +32,18 @@ class AppRoutes {
     switch (settings.name) {
       case Routes.initialRoute:
         return MaterialPageRoute(
-         // builder: (context) => const SplashScreen(),
-          builder: (context) => const ChooseType(),
+          builder: (context) => const SplashScreen(),
         );
       case Routes.chooseTypeRoute:
         return MaterialPageRoute(builder: (context) => const ChooseType(),
         );
       case Routes.loginRoute:
         return MaterialPageRoute(builder: (context) => const Login(),
+
+        );
+        case Routes.onboardingPageScreenRoute:
+        return MaterialPageRoute(builder: (context) => const OnBoardingScreen(),
+
         );
       // case Routes.loginRoute:
       //   return MaterialPageRoute(

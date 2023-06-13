@@ -7,6 +7,9 @@ class ImageAssets {
   static const String logoImage = '$imagePath/logo.png';
   static const String topcircleImage = '$imagePath/top_circle.png';
   static const String bottomcircleImage = '$imagePath/bottom_circle.png';
+  static const String onboard1Image = '$imagePath/onboard1.png';
+  static const String onboard2Image = '$imagePath/onboard2.png';
+  static const String onboard3Image = '$imagePath/onboard3.png';
   static const String loginLogoImage = '$imagePath/login_logo.png';
 
 

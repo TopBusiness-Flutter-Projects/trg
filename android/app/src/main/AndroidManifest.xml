@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.topbusiness.trg">
+    package="com.topbusiness.trj">
    <application
-        android:label="trg"
+        android:label="TRJ"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

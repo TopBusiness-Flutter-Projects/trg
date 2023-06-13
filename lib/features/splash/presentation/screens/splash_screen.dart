@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen>
 
   _goNext() {
   //  Navigator.pushNamed(context, Routes.chooseCountryRoute);
-    // _getStoreUser();
+     _getStoreUser();
   }
 
   _startDelay() async {
@@ -36,8 +36,34 @@ class _SplashScreenState extends State<SplashScreen>
 
   Future<void> _getStoreUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    // UserModel userModel = await Preferences.instance.getUserModel();
+    if (prefs.getString('onBoarding') != null) {
+      if (prefs.getString('user') != null) {
+
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          Routes.homePageScreenRoute,
+          ModalRoute.withName(
+            Routes.initialRoute,
+          ),
+        );
+
+      } else {
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          Routes.chooseTypeRoute,
+          ModalRoute.withName(
+            Routes.initialRoute,
+          ),
+        );
+      }
+    } else {
+      Navigator.pushReplacementNamed(
+        context,
+        Routes.onboardingPageScreenRoute,
+      );
+    }
   }
+
 
   @override
   void initState() {

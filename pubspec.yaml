@@ -95,13 +95,18 @@ dependencies:
   stroke_text: ^0.0.2
   get: ^4.6.5
   flutter_native_splash: ^2.2.19
-
+  change_app_package_name: ^1.1.0
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+flutter_icons:
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/images/login_logo.png"
+  adaptive_icon_foreground: "assets/images/login_logo.png"
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your

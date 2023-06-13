@@ -4,9 +4,9 @@ import '../preferences/preferences.dart';
 import 'hex_color.dart';
 
 class AppColors {
-  static Color primary = HexColor('#4455D7');
-  static Color secondPrimary = HexColor('#4455D7');
-  static Color orangeThirdPrimary = HexColor('#FF9201');
+  static Color primary = HexColor('#007EFF');
+  static Color secondPrimary = HexColor('#1D3BCA');
+  static Color orangeThirdPrimary = HexColor('#E6AE15');
   static final AppColors instance = AppColors._internal();
   static Color litePrimary = HexColor('#7F8CF3');
 
