@@ -3,7 +3,6 @@ import 'package:easy_localization/easy_localization.dart' as translate;
 import 'package:flutter/material.dart';
 import 'package:trj/core/utils/app_colors.dart';
 import 'package:trj/core/widgets/custom_textfield.dart';
-import 'package:trj/features/login/screen/widgets/custom_appbar.dart';
 
 import '../../../config/routes/app_routes.dart';
 import '../../../core/utils/assets_manager.dart';
