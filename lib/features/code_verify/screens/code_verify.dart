@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart' as translate;
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
+import 'package:trj/core/widgets/curved_app_bar.dart';
 import '../../../config/routes/app_routes.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/assets_manager.dart';
@@ -18,34 +19,7 @@ class CodeVerify extends StatelessWidget {
       appBar: PreferredSize(
 
         preferredSize: const Size.fromHeight(80),
-        child:
-        Directionality(
-
-          textDirection:
-          translate.EasyLocalization.of(context)!.locale.languageCode=='ar'?
-          TextDirection.ltr: TextDirection.rtl ,
-          child: Container(
-
-            padding:  EdgeInsets.only(top: 10,bottom: 10),
-            decoration: BoxDecoration(
-                color: AppColors.primary,
-                borderRadius: const BorderRadius.only(
-                    bottomRight: Radius.circular(16))),
-            child: Center(
-
-              child:
-              // CustomAppBar()
-              AppBar(
-                actions: [
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Image.asset(ImageAssets.logoImage),
-                  )
-                ],
-              ),
-            ),
-          ),
-        ),
+        child:CurvedAppBar()
       ),
 
       body: SingleChildScrollView(
