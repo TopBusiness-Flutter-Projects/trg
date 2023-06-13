@@ -77,7 +77,7 @@ class OnBoardingScreenState extends State<OnBoardingScreen> {
                     colors: [AppColors.primary, AppColors.secondPrimary])),
             child: Column(
               children: [
-                Expanded(
+                Flexible(
                   child: PageView(
                     children: cubit.listContentConfig,
                     onPageChanged: (value) {
@@ -122,17 +122,14 @@ class OnBoardingScreenState extends State<OnBoardingScreen> {
                 SizedBox(
                   height: 10,
                 ),
-                SizedBox(
-                  height: 10,
-                  child: InkWell(
-                    onTap: () {
-                      onDonePress();
-                    },
-                    child: Text(
-                      "skip".tr(),
-                      style: TextStyle(
-                          fontSize: 12, color: AppColors.orangeThirdPrimary),
-                    ),
+                InkWell(
+                  onTap: () {
+                    onDonePress();
+                  },
+                  child: Text(
+                    "skip".tr(),
+                    style: TextStyle(
+                        fontSize: 12, color: AppColors.orangeThirdPrimary),
                   ),
                 ),
                 SizedBox(

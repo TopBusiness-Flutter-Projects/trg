@@ -66,6 +66,7 @@ class AppColors {
   static Color blue2 = HexColor('#8290F8');
   static Color bluelight = HexColor('#D7EAF9');
   static Color orange = HexColor('#FE7C04');
+  static Color orange1 = HexColor('#E6AE15');
   static Color orangelight = HexColor('#FFEAD7');
   static Color opacityWhite = Colors.white.withOpacity(0.5);
   static Color transparent = Colors.transparent;

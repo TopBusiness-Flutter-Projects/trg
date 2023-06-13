@@ -31,16 +31,16 @@ class ChooseType extends StatelessWidget{
                   Navigator.pushNamed(context, Routes.loginRoute);
                 }),
               ),
-              SizedBox(height: 42,),
+              const SizedBox(height: 42,),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 18),
+                padding: const EdgeInsets.symmetric(horizontal: 18),
                 child: CustomButton(
                     borderRadius: 16,
                     text: "عميل",
                     color: AppColors.primary,
                     onClick: (){}),
               ),
-              SizedBox(height: 20,)
+              const SizedBox(height: 20,)
             ],
           ),
         ),

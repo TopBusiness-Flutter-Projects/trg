@@ -15,10 +15,13 @@ class CustomTextField extends StatelessWidget {
     this.validatorMessage = '',
     this.controller,
     this.imageColor = Colors.grey,
+    this.borderSide=BorderSide.none,
     required this.backgroundColor,
     this.isEnable = true, this.onchange,
+    this.prefixWidget
   }) : super(key: key);
   final Widget? suffixWidget;
+  final Widget? prefixWidget;
   final Color imageColor;
   final Color backgroundColor;
   final String title;
@@ -29,6 +32,7 @@ class CustomTextField extends StatelessWidget {
   final Function(String)? onchange;
   final TextInputType textInputType;
   final TextEditingController? controller;
+  final BorderSide borderSide;
 
   @override
   Widget build(BuildContext context) {
@@ -42,15 +46,16 @@ class CustomTextField extends StatelessWidget {
         decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(vertical: 14, horizontal: 14),
           hintStyle: TextStyle(
-            color: AppColors.secondPrimary,
+            color: AppColors.gray,
             fontWeight: FontWeight.bold,
           ),
           hintText: title,
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(25.0),
-            borderSide: BorderSide.none,
+            borderRadius: BorderRadius.circular(16.0),
+            borderSide: borderSide,
           ),
           suffixIcon: suffixWidget,
+          prefixIcon:prefixWidget ,
           fillColor: backgroundColor,
           filled: true,
         ),

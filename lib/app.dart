@@ -180,6 +180,7 @@ class _ElmazoonState extends State<Elmazoon> {
        ],
        child:
       GetMaterialApp(
+
         supportedLocales: context.supportedLocales,
         locale: context.locale,
         theme: appTheme(),
