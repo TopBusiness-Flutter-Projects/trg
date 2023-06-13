@@ -6,5 +6,11 @@
   "email": "Email",
   "password": "Password",
   "new_login": "New User",
-  "forgot_password": "Forgot Password"
+  "submit": "Submit",
+  "forgot_password": "Forgot Password",
+  "password_recovery": "Password Recovery",
+  "recovery": "Recovery",
+  "please_enter_code": "Please enter the confirmation code!",
+  "confirmation_code": "A confirmation code will be sent to your email",
+  "you_are_safe": "You are safe with us, we will return your password to you"
 }

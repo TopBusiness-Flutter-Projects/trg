@@ -3,8 +3,11 @@ import 'package:easy_localization/easy_localization.dart' as translate;
 import 'package:flutter/material.dart';
 import 'package:trj/core/utils/app_colors.dart';
 import 'package:trj/core/widgets/custom_textfield.dart';
+import 'package:trj/features/login/screen/widgets/custom_appbar.dart';
 
+import '../../../config/routes/app_routes.dart';
 import '../../../core/utils/assets_manager.dart';
+
 import '../../../core/widgets/custom_button.dart';
 
 class Login extends StatelessWidget {
@@ -17,7 +20,8 @@ class Login extends StatelessWidget {
       appBar: PreferredSize(
 
         preferredSize: const Size.fromHeight(80),
-        child: Directionality(
+        child:
+        Directionality(
 
           textDirection:
           translate.EasyLocalization.of(context)!.locale.languageCode=='ar'?
@@ -31,8 +35,9 @@ class Login extends StatelessWidget {
                       bottomRight: Radius.circular(16))),
               child: Center(
 
-                child: AppBar(
-
+                child:
+               // CustomAppBar()
+                AppBar(
                   actions: [
                     Padding(
                       padding: EdgeInsets.all(10),
@@ -91,7 +96,11 @@ class Login extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                 Text("new_login",style: TextStyle(color: AppColors.orangeThirdPrimary),).tr(),
-                  Text("forgot_password",style: TextStyle(color: AppColors.orangeThirdPrimary)).tr(),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, Routes.forgotPasswordScreenRoute);
+                    },
+                      child: Text("forgot_password",style: TextStyle(color: AppColors.orangeThirdPrimary)).tr()),
 
               ],),
 

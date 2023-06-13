@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:trj/features/code_verify/screens/code_verify.dart';
+import 'package:trj/features/forgot_password/screens/forgot_password.dart';
 import 'package:trj/features/splash/presentation/screens/splash_screen.dart';
 
 
@@ -23,6 +25,8 @@ class Routes {
   static const String sourceReferencesDetailsRoute = '/sourceReferencesDetails';
   static const String examInstructionsRoute = '/examInstructions';
   static const String examHeroScreenRoute = '/examHeroScreen';
+  static const String codeVerifyScreenRoute = '/codeVerifyScreen';
+  static const String forgotPasswordScreenRoute = '/forgotPasswordScreen';
 }
 
 class AppRoutes {
@@ -40,6 +44,13 @@ class AppRoutes {
       case Routes.loginRoute:
         return MaterialPageRoute(builder: (context) => const Login(),
 
+        );
+      case Routes.codeVerifyScreenRoute:
+        return MaterialPageRoute(builder: (context) => const CodeVerify(),
+
+        );
+      case Routes.forgotPasswordScreenRoute:
+        return MaterialPageRoute(builder: (context) => const ForgotPassword(),
         );
         case Routes.onboardingPageScreenRoute:
         return MaterialPageRoute(builder: (context) => const OnBoardingScreen(),
