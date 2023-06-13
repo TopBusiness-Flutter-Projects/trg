@@ -4,6 +4,7 @@ import 'package:trj/core/widgets/curved_app_bar.dart';
 
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/assets_manager.dart';
+import '../../../core/widgets/custom_textfield.dart';
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({Key? key}) : super(key: key);
 
@@ -33,6 +34,26 @@ class SignUpScreen extends StatelessWidget {
                   fontWeight: FontWeight.w600),
             ).tr(),
             const SizedBox(height: 28,),
+            CustomTextField(
+                title: translate.tr("user_name"),
+                textInputType: TextInputType.name,
+                prefixWidget: ImageIcon(AssetImage(ImageAssets.profileIcon)),
+                borderSide: BorderSide(color: AppColors.primary),
+                backgroundColor: AppColors.white),
+            const SizedBox(height: 26,),
+            CustomTextField(
+                title: translate.tr("password"),
+                textInputType: TextInputType.text,
+                prefixWidget: Icon(Icons.lock_outline),
+                borderSide: BorderSide(color: AppColors.primary),
+                backgroundColor: AppColors.white),
+            const SizedBox(height: 26,),
+            CustomTextField(
+                title: translate.tr("email"),
+                textInputType: TextInputType.emailAddress,
+                prefixWidget: Icon(Icons.email_outlined),
+                borderSide: BorderSide(color: AppColors.primary),
+                backgroundColor: AppColors.white),
 
           ],
         ),

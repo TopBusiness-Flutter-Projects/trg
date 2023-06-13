@@ -11,6 +11,8 @@ class ImageAssets {
   static const String onboard2Image = '$imagePath/onboard2.png';
   static const String onboard3Image = '$imagePath/onboard3.png';
   static const String loginLogoImage = '$imagePath/login_logo.png';
+  //*****************************************************************
+static const String profileIcon = "$iconsPath/profile_icon.png";
 
 
 
