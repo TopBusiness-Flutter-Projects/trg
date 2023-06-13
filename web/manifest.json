@@ -1,11 +1,11 @@
 {
-    "name": "trg",
-    "short_name": "trg",
+    "name": "trj",
+    "short_name": "trj",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "trg",
+    "description": "trj",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

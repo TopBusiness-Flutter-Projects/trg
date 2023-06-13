@@ -4,13 +4,13 @@ import 'dart:io';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:trg/core/api/status_code.dart';
+import 'package:trj/core/api/status_code.dart';
 
 import '../error/exceptions.dart';
 import 'app_interceptors.dart';
 import 'base_api_consumer.dart';
 import 'end_points.dart';
-import 'package:trg/injector.dart' as injector;
+import 'package:trj/injector.dart' as injector;
 
 class DioConsumer implements BaseApiConsumer {
   final Dio client;

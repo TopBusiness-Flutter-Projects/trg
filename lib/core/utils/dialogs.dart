@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trg/core/utils/app_colors.dart';
+import 'package:trj/core/utils/app_colors.dart';
 
 
 /*----------------------------------------------------------------------------*/

@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'package:trg/core/preferences/preferences.dart';
+import 'package:trj/core/preferences/preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:trg/core/utils/assets_manager.dart';
+import 'package:trj/core/utils/assets_manager.dart';
 
 import '../../../../config/routes/app_routes.dart';
 import '../../../../core/utils/app_colors.dart';

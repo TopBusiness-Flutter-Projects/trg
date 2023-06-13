@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:trg/core/utils/app_colors.dart';
-import 'package:trg/core/widgets/custom_button.dart';
+import 'package:trj/core/utils/app_colors.dart';
+import 'package:trj/core/widgets/custom_button.dart';
 
 import '../../../config/routes/app_routes.dart';
 import '../../../core/utils/assets_manager.dart';

@@ -14,7 +14,7 @@ import 'config/themes/app_theme.dart';
 import 'core/preferences/preferences.dart';
 import 'core/utils/app_colors.dart';
 import 'core/utils/app_strings.dart';
-import 'package:trg/injector.dart' as injector;
+import 'package:trj/injector.dart' as injector;
 import 'dart:developer' as developer;
 import 'package:path/path.dart';
 

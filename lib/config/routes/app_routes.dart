@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trg/features/splash/presentation/screens/splash_screen.dart';
+import 'package:trj/features/splash/presentation/screens/splash_screen.dart';
 
 
 

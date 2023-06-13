@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intro_slider/intro_slider.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:trg/core/widgets/custom_button.dart';
+import 'package:trj/core/widgets/custom_button.dart';
 
 import '../../../config/routes/app_routes.dart';
 import '../../../core/preferences/preferences.dart';
