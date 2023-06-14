@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,11 +7,9 @@ import 'package:trj/injector.dart' as injector;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get_it/get_it.dart';
 import 'package:flutter_windowmanager/flutter_windowmanager.dart';
-import 'package:screen_capture_event/screen_capture_event.dart';
 import 'dart:async';
 
 import 'app.dart';
-import 'core/notification/notification.dart';
 import 'core/preferences/preferences.dart';
 import 'core/utils/app_colors.dart';
 import 'core/utils/restart_app_class.dart';
@@ -68,7 +65,6 @@ Future<void> main() async {
   );
 }
 
-PushNotificationService? pushNotificationService = PushNotificationService();
 
 final locator = GetIt.instance;
 FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =

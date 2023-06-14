@@ -7,6 +7,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
+import 'features/home/cubit/home_cubit.dart';
+import 'features/navigation_bottom/cubit/navigation_cubit.dart';
 import 'features/onboarding/cubit/on_boarding_cubit.dart';
 
 
@@ -17,7 +19,13 @@ Future<void> setup() async {
 
   ///////////////////////// Blocs ////////////////////////
   serviceLocator.registerFactory(
+        () => HomeCubit(   serviceLocator()),
+  );
+  serviceLocator.registerFactory(
         () => OnBoardingCubit(),
+  );
+  serviceLocator.registerFactory(
+        () => NavigationCubit(),
   );
 
   ///////////////////////////////////////////////////////////////////////////////

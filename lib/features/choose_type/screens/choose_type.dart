@@ -38,7 +38,12 @@ class ChooseType extends StatelessWidget{
                     borderRadius: 16,
                     text: "عميل",
                     color: AppColors.primary,
-                    onClick: (){}),
+                    onClick: (){
+                      Navigator.pushNamedAndRemoveUntil(context, Routes.homePageScreenRoute,
+                        ModalRoute.withName(
+                        Routes.initialRoute,
+                      ),);
+                    }),
               ),
               const SizedBox(height: 20,)
             ],

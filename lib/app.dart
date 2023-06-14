@@ -23,6 +23,8 @@ import 'core/utils/toast_message_method.dart';
 
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
+import 'features/home/cubit/home_cubit.dart';
+import 'features/navigation_bottom/cubit/navigation_cubit.dart';
 import 'features/onboarding/cubit/on_boarding_cubit.dart';
 
 class Elmazoon extends StatefulWidget {
@@ -137,6 +139,12 @@ class _ElmazoonState extends State<Elmazoon> {
       providers: [
         BlocProvider(
           create: (_) => injector.serviceLocator<OnBoardingCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => injector.serviceLocator<NavigationCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => injector.serviceLocator<HomeCubit>(),
         ),
       //   BlocProvider(
       //     create: (_) => injector.serviceLocator<LoginCubit>(),

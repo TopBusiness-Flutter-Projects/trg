@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:trj/features/code_verify/screens/code_verify.dart';
 import 'package:trj/features/forgot_password/screens/forgot_password.dart';
 import 'package:trj/features/new_password/screens/new_password.dart';
@@ -8,6 +9,7 @@ import 'package:trj/features/splash/presentation/screens/splash_screen.dart';
 
 
 import '../../core/utils/app_strings.dart';
+import '../../features/navigation_bottom/screens/navigation_bottom.dart';
 import '../../features/onboarding/screens/onboarding_screen.dart';
 import '../../features/choose_type/screens/choose_type.dart';
 import '../../features/login/screen/login.dart';
@@ -64,6 +66,13 @@ class AppRoutes {
       case Routes.forgotPasswordScreenRoute:
         return MaterialPageRoute(builder: (context) => const ForgotPassword(),
         );
+    case Routes.homePageScreenRoute:
+      return PageTransition(
+        type: PageTransitionType.fade,
+        alignment: Alignment.center,
+        duration: const Duration(milliseconds: 1300),
+        child: Zoom(),
+      );
         case Routes.onboardingPageScreenRoute:
         return MaterialPageRoute(builder: (context) => const OnBoardingScreen(),
 

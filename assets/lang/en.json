@@ -24,5 +24,8 @@
   "recovery": "Recovery",
   "please_enter_code": "Please enter the confirmation code!",
   "confirmation_code": "A confirmation code will be sent to your email",
-  "you_are_safe": "You are safe with us, we will return your password to you"
+  "you_are_safe": "You are safe with us, we will return your password to you",
+  "select_provider": "Select Provider",
+  "home": "Home",
+  "employment": "Employment"
 }
