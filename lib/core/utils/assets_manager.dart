@@ -13,6 +13,9 @@ class ImageAssets {
   static const String loginLogoImage = '$imagePath/login_logo.png';
   //*****************************************************************
 static const String profileIcon = "$iconsPath/profile_icon.png";
+static const String translateIcon = "$iconsPath/translate_icon.png";
+static const String experienceIcon = "$iconsPath/experience.png";
+static const String serviceProviderTypeIcon = "$iconsPath/service_provider_type.png";
 
 
 

@@ -14,6 +14,7 @@ class CustomTextField extends StatelessWidget {
     this.isPassword = false,
     this.validatorMessage = '',
     this.controller,
+    this.prefix,
     this.imageColor = Colors.grey,
     this.borderSide=BorderSide.none,
     required this.backgroundColor,
@@ -22,6 +23,7 @@ class CustomTextField extends StatelessWidget {
   }) : super(key: key);
   final Widget? suffixWidget;
   final Widget? prefixWidget;
+  final Widget? prefix;
   final Color imageColor;
   final Color backgroundColor;
   final String title;
@@ -44,7 +46,8 @@ class CustomTextField extends StatelessWidget {
         obscureText: isPassword,
         enabled: isEnable,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(vertical: 14, horizontal: 14),
+         // contentPadding: EdgeInsets.only(right: 10),
+          contentPadding: EdgeInsets.fromLTRB(20.0, 20.0, 30.0, 20.0),
           hintStyle: TextStyle(
             color: AppColors.gray,
             fontWeight: FontWeight.bold,
@@ -56,6 +59,13 @@ class CustomTextField extends StatelessWidget {
           ),
           suffixIcon: suffixWidget,
           prefixIcon:prefixWidget ,
+
+          prefixIconConstraints: BoxConstraints(
+            minHeight: 0,
+            minWidth: 0,
+
+          ),
+          prefix: prefix,
           fillColor: backgroundColor,
           filled: true,
         ),
