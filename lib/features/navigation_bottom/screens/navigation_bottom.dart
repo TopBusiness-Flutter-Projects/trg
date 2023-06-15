@@ -11,6 +11,7 @@ import '../../../core/utils/assets_manager.dart';
 import '../../../core/widgets/my_svg_widget.dart';
 import '../../employment/presentation/screens/employment.dart';
 import '../../home/presentation/screens/home.dart';
+import '../widget/menu_screen_widget.dart';
 
 final ZoomDrawerController z = ZoomDrawerController();
 
@@ -44,7 +45,9 @@ class _ZoomState extends State<Zoom> {
       menuScreenOverlayColor: AppColors.primary,
       menuBackgroundColor: AppColors.white,
       mainScreen: const NavigatorBar(),
-      menuScreen: Container(),
+        menuScreen: MenuScreenWidget(
+          closeClick: () => z.close?.call(),
+        ),
       // menuScreen:
       // MenuScreenWidget(
       //   closeClick: () => z.close?.call(),
