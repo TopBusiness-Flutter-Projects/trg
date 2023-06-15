@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../config/routes/app_routes.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../widget/providelist.dart';
 import '../../widget/slider.dart';
@@ -22,23 +23,28 @@ class _HomeScreenState extends State<HomeScreen> {
           shrinkWrap: true,
           children: [
             SizedBox(height: 14,),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: AppColors.gray8,
-                    width: 1,
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, Routes.providerSearchFilterRoute);
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: AppColors.gray8,
+                      width: 1,
+                    ),
+                    borderRadius: BorderRadius.circular(16),
                   ),
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('search'.tr()),
-                    Icon(Icons.search),
-                  ],
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('search'.tr()),
+                      Icon(Icons.search),
+                    ],
+                  ),
                 ),
               ),
             ),

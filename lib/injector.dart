@@ -1,4 +1,3 @@
-
 import 'core/api/app_interceptors.dart';
 import 'core/api/base_api_consumer.dart';
 import 'core/api/dio_consumer.dart';
@@ -7,10 +6,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
+import 'features/employment/cubit/employment_cubit.dart';
+import 'features/filter_providers/cubit/provider_filter_cubit.dart';
 import 'features/home/cubit/home_cubit.dart';
 import 'features/navigation_bottom/cubit/navigation_cubit.dart';
 import 'features/onboarding/cubit/on_boarding_cubit.dart';
-
+import 'features/search/cubit/provider_filter_cubit.dart';
 
 final serviceLocator = GetIt.instance;
 
@@ -19,13 +20,22 @@ Future<void> setup() async {
 
   ///////////////////////// Blocs ////////////////////////
   serviceLocator.registerFactory(
-        () => HomeCubit(   serviceLocator()),
+    () => HomeCubit(serviceLocator()),
   );
   serviceLocator.registerFactory(
-        () => OnBoardingCubit(),
+    () => ProviderFilterCubit(serviceLocator()),
   );
   serviceLocator.registerFactory(
-        () => NavigationCubit(),
+    () => EmploymentCubit(serviceLocator()),
+  );
+  serviceLocator.registerFactory(
+    () => ProviderSearchCubit(serviceLocator()),
+  );
+  serviceLocator.registerFactory(
+    () => OnBoardingCubit(),
+  );
+  serviceLocator.registerFactory(
+    () => NavigationCubit(),
   );
 
   ///////////////////////////////////////////////////////////////////////////////

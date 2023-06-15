@@ -4,16 +4,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trj/core/model/cities_model.dart';
 import 'package:trj/core/utils/app_colors.dart';
 
+import '../../../core/model/service_type_model.dart';
 import '../cubit/employment_cubit.dart';
 
-class Cities extends StatefulWidget {
-   Cities({Key? key}) : super(key: key);
+class ServicesType extends StatefulWidget {
+   ServicesType({Key? key}) : super(key: key);
 
   @override
-  State<Cities> createState() => _CitiesState();
+  State<ServicesType> createState() => _ServicesTypeState();
 }
 
-class _CitiesState extends State<Cities> {
+class _ServicesTypeState extends State<ServicesType> {
 
   @override
   Widget build(BuildContext context) {
@@ -55,8 +56,8 @@ class _CitiesState extends State<Cities> {
                     ),
                   ],
                 ),
-                items: cubit.cities
-                    .map((item) => DropdownMenuItem<CitiesModel>(
+                items: cubit.serviceTypeList
+                    .map((item) => DropdownMenuItem<ServicesTypeModel>(
                   value: item,
                   child: Text(
                     item.name,
@@ -69,9 +70,9 @@ class _CitiesState extends State<Cities> {
                   ),
                 ))
                     .toList(),
-                value: cubit.selectedCity,
+                value: cubit.selectedServiceType,
                 onChanged: (value) {
-                cubit.changeCity(value);
+                 cubit.changeServideType(value);
                 },
                 buttonStyleData: ButtonStyleData(
                   height: 50,

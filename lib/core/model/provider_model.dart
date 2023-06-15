@@ -30,8 +30,8 @@ class ProviderModel {
     email: json["email"],
     image: json["image"],
     address: json["address"],
-    providerType: json["provider_type"],
-    aboutMe: json["about_me"],
+    providerType: json["provider_type"]??0,
+    aboutMe: json["about_me"]??'',
     previousExperience: json["previous_experience"],
     city: json["city"],
   );

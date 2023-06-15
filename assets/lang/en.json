@@ -27,5 +27,8 @@
   "you_are_safe": "You are safe with us, we will return your password to you",
   "select_provider": "Select Provider",
   "home": "Home",
-  "employment": "Employment"
+  "employment": "Employment",
+  "person": "Person",
+  "search": "Search",
+  "no_data": "No Data Found"
 }

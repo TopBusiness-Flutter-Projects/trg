@@ -9,16 +9,20 @@ import 'package:trj/features/splash/presentation/screens/splash_screen.dart';
 
 
 import '../../core/utils/app_strings.dart';
+import '../../features/filter_providers/presentation/screens/provider_filter.dart';
 import '../../features/navigation_bottom/screens/navigation_bottom.dart';
 import '../../features/onboarding/screens/onboarding_screen.dart';
 import '../../features/choose_type/screens/choose_type.dart';
 import '../../features/login/screen/login.dart';
+import '../../features/search/presentation/screens/provider_search.dart';
 
 
 class Routes {
   static const String initialRoute = '/';
   static const String loginRoute = '/login';
   static const String chooseTypeRoute = '/chooseType';
+  static const String providerFilterRoute = '/providerFilter';
+  static const String providerSearchFilterRoute = '/providerSearch';
   static const String paperexamRegisterRoute = '/paperexamRegister';
   static const String paperdetialsexamRegisterRoute = '/paperdetailsexamRegister';
   static const String homePageScreenRoute = '/homePageScreen';
@@ -47,6 +51,9 @@ class AppRoutes {
       case Routes.chooseTypeRoute:
         return MaterialPageRoute(builder: (context) => const ChooseType(),
         );
+        case Routes.providerFilterRoute:
+        return MaterialPageRoute(builder: (context) => const ProviderFilterScreen(),
+        );
       case Routes.loginRoute:
         return MaterialPageRoute(builder: (context) => const Login(),
 
@@ -61,6 +68,10 @@ class AppRoutes {
         );
       case Routes.codeVerifyScreenRoute:
         return MaterialPageRoute(builder: (context) => const CodeVerify(),
+
+        );
+        case Routes.providerSearchFilterRoute:
+        return MaterialPageRoute(builder: (context) => const ProviderSearchScreen(),
 
         );
       case Routes.forgotPasswordScreenRoute:

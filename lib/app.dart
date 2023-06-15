@@ -23,9 +23,12 @@ import 'core/utils/toast_message_method.dart';
 
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
+import 'features/employment/cubit/employment_cubit.dart';
+import 'features/filter_providers/cubit/provider_filter_cubit.dart';
 import 'features/home/cubit/home_cubit.dart';
 import 'features/navigation_bottom/cubit/navigation_cubit.dart';
 import 'features/onboarding/cubit/on_boarding_cubit.dart';
+import 'features/search/cubit/provider_filter_cubit.dart';
 
 class Elmazoon extends StatefulWidget {
   const Elmazoon({Key? key}) : super(key: key);
@@ -146,6 +149,16 @@ class _ElmazoonState extends State<Elmazoon> {
         BlocProvider(
           create: (_) => injector.serviceLocator<HomeCubit>(),
         ),
+        BlocProvider(
+          create: (_) => injector.serviceLocator<EmploymentCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => injector.serviceLocator<ProviderFilterCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => injector.serviceLocator<ProviderSearchCubit>(),
+        ),
+
       //   BlocProvider(
       //     create: (_) => injector.serviceLocator<LoginCubit>(),
       //   ),

@@ -1,20 +1,22 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trj/core/model/cities_model.dart';
 import 'package:trj/core/utils/app_colors.dart';
 
+import '../../../core/model/service_type_model.dart';
 import '../cubit/employment_cubit.dart';
 
-class Cities extends StatefulWidget {
-   Cities({Key? key}) : super(key: key);
+class ProviderType extends StatefulWidget {
+   ProviderType({Key? key}) : super(key: key);
 
   @override
-  State<Cities> createState() => _CitiesState();
+  State<ProviderType> createState() => _ProviderTypeState();
 }
 
-class _CitiesState extends State<Cities> {
-
+class _ProviderTypeState extends State<ProviderType> {
+List<String> providerTypes=['office'.tr(),'person'.tr()];
   @override
   Widget build(BuildContext context) {
     EmploymentCubit cubit=context.read<EmploymentCubit>();
@@ -55,11 +57,11 @@ class _CitiesState extends State<Cities> {
                     ),
                   ],
                 ),
-                items: cubit.cities
-                    .map((item) => DropdownMenuItem<CitiesModel>(
+                items: providerTypes
+                    .map((item) => DropdownMenuItem<String>(
                   value: item,
                   child: Text(
-                    item.name,
+                    item,
                     style:  TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -69,9 +71,9 @@ class _CitiesState extends State<Cities> {
                   ),
                 ))
                     .toList(),
-                value: cubit.selectedCity,
+                value: cubit.selectedProviderType,
                 onChanged: (value) {
-                cubit.changeCity(value);
+                cubit.changeProviderType(value);
                 },
                 buttonStyleData: ButtonStyleData(
                   height: 50,
