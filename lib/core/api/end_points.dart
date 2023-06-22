@@ -7,6 +7,8 @@ class EndPoints {
   static const String citiesListUrl = '${baseUrl}cities';
   static const String serviceTypeListUrl = '${baseUrl}translation_types';
   static const String loginUrl = '${baseUrl}provider/auth/login';
+  static const String registerUrl = '${baseUrl}provider/auth/register';
+
 
 
 

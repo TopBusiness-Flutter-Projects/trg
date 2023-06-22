@@ -14,7 +14,7 @@ import '../../../core/utils/toast_message_method.dart';
 part 'navigation_provider_state.dart';
 
 class NavigationProviderCubit extends Cubit<NavigationProviderState> {
-  int index=2;
+  int index=0;
 
   NavigationProviderCubit() : super(NavigationProviderInitial()){
 

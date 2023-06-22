@@ -104,6 +104,8 @@ dependencies:
   restart_app: ^1.2.1
   flutter_launch: ^0.3.0
   email_validator: ^2.1.17
+  file_picker: ^5.2.2
+
 dependency_overrides:
   modal_bottom_sheet: ^3.0.0-pre
 

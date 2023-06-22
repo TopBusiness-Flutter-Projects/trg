@@ -31,6 +31,7 @@ import 'features/filter_providers/cubit/provider_filter_cubit.dart';
 import 'features/home/cubit/home_cubit.dart';
 import 'features/navigation_bottom/cubit/navigation_cubit.dart';
 import 'features/onboarding/cubit/on_boarding_cubit.dart';
+import 'features/provider_profile/cubit/provider_data_cubit.dart';
 import 'features/search/cubit/provider_filter_cubit.dart';
 
 class Elmazoon extends StatefulWidget {
@@ -169,6 +170,9 @@ class _ElmazoonState extends State<Elmazoon> {
         ),
         BlocProvider(
           create: (_) => injector.serviceLocator<NavigationProviderCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => injector.serviceLocator<ProviderDataCubit>(),
         ),
 
       //   BlocProvider(

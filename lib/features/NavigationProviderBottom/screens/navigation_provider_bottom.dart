@@ -11,8 +11,8 @@ import '../../../core/utils/assets_manager.dart';
 import '../../../core/widgets/my_svg_widget.dart';
 import '../../employment/presentation/screens/employment.dart';
 import '../../home/presentation/screens/home.dart';
+import '../../provider_profile/screen/provider_profile.dart';
 import '../cubit/navigation_provider_cubit.dart';
-
 
 class ZoomPrpvider extends StatefulWidget {
   const ZoomPrpvider({Key? key}) : super(key: key);
@@ -22,65 +22,53 @@ class ZoomPrpvider extends StatefulWidget {
 }
 
 class _ZoomPrpviderState extends State<ZoomPrpvider> {
+  int _page = 0;
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<CurvedNavigationBarState> _bottomNavigationProviderKey =
+      GlobalKey();
 
-    int _page = 2;
-    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-    final GlobalKey<CurvedNavigationBarState> _bottomNavigationProviderKey = GlobalKey();
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<NavigationProviderCubit, NavigationProviderState>(
+      builder: (context, state) {
+        _page = context.read<NavigationProviderCubit>().index;
+        return Scaffold(
+          appBar: AppBar(
+            backgroundColor: AppColors.primary,
+          ),
+          key: _scaffoldKey,
+          bottomNavigationBar: BottomAppBar(
+            key: _bottomNavigationProviderKey,
 
-    @override
-    Widget build(BuildContext context) {
-      return BlocBuilder<NavigationProviderCubit, NavigationProviderState>(
-        builder: (context, state) {
-          _page = context.read<NavigationProviderCubit>().index;
-          return Scaffold(
-            appBar: AppBar(
-              backgroundColor: AppColors.primary,
-            ),
-            key: _scaffoldKey,
-            bottomNavigationBar: BottomAppBar(
-              key: _bottomNavigationProviderKey,
-
-              height:85.0,
+            height: 85.0,
+            child: Container(
+              decoration: BoxDecoration(
+                
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(16),bottomRight: Radius.circular(16))
+              ),
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-             
-
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
-                        context.read<NavigationProviderCubit>().updateIndex(1);
+                        context.read<NavigationProviderCubit>().updateIndex(0);
                       },
                       child: Container(
-                        color: AppColors.primary,
-                        padding: EdgeInsets.only(bottom:_page == 1 ? 10:0),
-                        child: Center(
-                          child: Container(
-                            width: 75,
 
-                            decoration: BoxDecoration(
-                                color: _page == 1
-                                    ? AppColors.white
-                                    : AppColors.primary,
-                                borderRadius: BorderRadius.only(
-                                    bottomRight: Radius.circular(14))),
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Column(
-                                children: [
-                                  MySvgWidget(
-                                    path: ImageAssets.jobIcon,
-                                    size: _page != 1 ? 25 : 40,
-                                    imageColor: _page == 1
-                                        ? AppColors.orangeThirdPrimary
-                                        : AppColors.white,
-                                  ),
-                                  Text(
-                                    "employment".tr(),
-                                    style: TextStyle(
-                                        color:_page==1? AppColors.orangeThirdPrimary:AppColors.white,
-                                        fontSize: 10),
-                                  )
-                                ],
+                        width: MediaQuery.of(context).size.width / 2,
+                        color: _page == 0
+                            ? AppColors.orangeThirdPrimary
+                            : AppColors.primary,
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(6.0),
+                            child: Center(
+                              child: MySvgWidget(
+                                path: ImageAssets.userIcon,
+                                size: 40,
+                                imageColor: AppColors.white,
                               ),
                             ),
                           ),
@@ -91,38 +79,21 @@ class _ZoomPrpviderState extends State<ZoomPrpvider> {
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
-                        context.read<NavigationProviderCubit>().updateIndex(2);
+                        context.read<NavigationProviderCubit>().updateIndex(1);
                       },
                       child: Container(
-                        padding: EdgeInsets.only( bottom:_page == 2 ? 10:0),
+                        width: MediaQuery.of(context).size.width / 2,
+                        color: _page == 1
+                            ? AppColors.orangeThirdPrimary
+                            : AppColors.primary,
                         child: Center(
-                          child: Container(
-                            width: 75,
-                            decoration: BoxDecoration(
-                                color:
-                                _page == 2 ? AppColors.white : AppColors.primary,
-                                borderRadius: BorderRadius.only(
-                                    bottomRight: Radius.circular(14))),
+                          child: Padding(
+                            padding: const EdgeInsets.all(6.0),
                             child: Center(
-                              child: Padding(
-                                padding: const EdgeInsets.all(6.0),
-                                child: Column(
-                                  children: [
-                                    MySvgWidget(
-                                      path: ImageAssets.homeIcon,
-                                      size: _page != 2 ? 25 : 40,
-                                      imageColor: _page == 2
-                                          ? AppColors.orangeThirdPrimary
-                                          : AppColors.white,
-                                    ),
-                                    Text(
-                                      "home".tr(),
-                                      style: TextStyle(
-                                          color:_page==2? AppColors.orangeThirdPrimary:AppColors.white,
-                                          fontSize: 14),
-                                    )
-                                  ],
-                                ),
+                              child: MySvgWidget(
+                                path: ImageAssets.menu1Icon,
+                                size: 40,
+                                imageColor: AppColors.white,
                               ),
                             ),
                           ),
@@ -132,24 +103,20 @@ class _ZoomPrpviderState extends State<ZoomPrpvider> {
                   ),
                 ],
               ),
-              color: AppColors.primary,
             ),
-            body: pages(),
-          );
-        },
-      );
-    }
+            //    color: AppColors.primary,
+          ),
+          body: pages(),
+        );
+      },
+    );
+  }
 
-    Widget pages() {
-      if (_page == 2) {
-        return HomeScreen();
-      } else {
-        return Employment();
-      }
+  Widget pages() {
+    if (_page == 0) {
+      return ProviderProfile();
+    } else {
+      return Employment();
     }
-  
+  }
 }
-
-
-
-

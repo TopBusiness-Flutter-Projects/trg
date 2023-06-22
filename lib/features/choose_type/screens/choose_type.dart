@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trj/core/utils/app_colors.dart';
 import 'package:trj/core/widgets/custom_button.dart';
 
 import '../../../config/routes/app_routes.dart';
 import '../../../core/utils/assets_manager.dart';
 
-class ChooseType extends StatelessWidget{
+class ChooseType extends StatefulWidget{
   const ChooseType({Key? key}) : super(key: key);
 
+  @override
+  State<ChooseType> createState() => _ChooseTypeState();
+}
+
+class _ChooseTypeState extends State<ChooseType> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +34,7 @@ class ChooseType extends StatelessWidget{
                     text: "مقدم خدمة",
                     color: AppColors.primary,
                     onClick: (){
-                  Navigator.pushNamed(context, Routes.loginRoute);
+                      _getStoreUser();
                 }),
               ),
               const SizedBox(height: 42,),
@@ -52,4 +58,31 @@ class ChooseType extends StatelessWidget{
       ),
     );
   }
-}
+
+
+
+  Future<void> _getStoreUser() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+      if (prefs.getString('user') != null) {
+
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          Routes.providerhomePageScreenRoute,
+          ModalRoute.withName(
+            Routes.initialRoute,
+          ),
+        );
+
+      } else {
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          Routes.loginRoute,
+          ModalRoute.withName(
+            Routes.initialRoute,
+          ),
+        );
+      }
+    }
+  }
+
+

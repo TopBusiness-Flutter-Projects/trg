@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:trj/core/model/service_type_data_model.dart';
 import 'package:trj/features/login/model/login_model.dart';
+import '../../features/sign_up/model/register_model.dart';
 import '../api/base_api_consumer.dart';
 import '../api/end_points.dart';
 import '../error/exceptions.dart';
@@ -96,7 +97,18 @@ class ServiceApi {
       return Left(ServerFailure());
     }
   }
-
+  Future<Either<Failure, UserModel>> registerUser(RegisterModel userData) async {
+    try {
+      final response = await dio.post(
+        EndPoints.registerUrl,
+        formDataIsEnabled: true,
+        body: await userData.updateToJson(),
+      );
+      return Right(UserModel.fromJson(response));
+    } on ServerException {
+      return Left(ServerFailure());
+    }
+  }
   Future<Either<Failure, UserModel>> postLogin(LoginModel model) async {
     try {
       final response = await dio.post(

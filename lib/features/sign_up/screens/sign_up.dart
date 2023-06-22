@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart' as translate;
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -397,7 +399,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   onChanged: (IndividualProvider? value) {
                                     print(value);
                                     if(value!=null){
-                                      cubit.registerModel.individualType=1;
+                                      cubit.registerModel.individualType=2;
 
                                       cubit.changeServiceProviderType(value);
                                       // setState(() {
@@ -415,7 +417,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   onChanged: (IndividualProvider? value) {
                                     print(value);
                                     if(value!=null){
-                                      cubit.registerModel.individualType=2;
+                                      cubit.registerModel.individualType=1;
                                       cubit.changeServiceProviderType(value);
                                       print(value.toString());
 
@@ -443,22 +445,42 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         visible: selectedServiceProvider == ServiceProvider.individual
                           ? true
                           : false,
-                          child: Container(
-                            margin: EdgeInsets.symmetric(horizontal: 20),
-                            padding: EdgeInsets.symmetric(horizontal: 20,vertical: 15),
-                            decoration: BoxDecoration(
-                              color: Color(0xf007EFF),
-                              borderRadius: BorderRadius.circular(20)
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(ImageAssets.attatchIcon),
-                                SizedBox(width: 20,),
-                                Text("attachCertificate").tr(),
+                          child: InkWell(
+                            onTap: () {
+                              buildAlertDialog("3");
+                            },
+                            child: Container(
+                              margin: EdgeInsets.symmetric(horizontal: 20),
+                              padding: EdgeInsets.symmetric(horizontal: 20,vertical: 15),
+                              decoration: BoxDecoration(
+                                color: Color(0xf007EFF),
+                                borderRadius: BorderRadius.circular(20)
+                              ),
+                              child: Row(
+                                children: [
+                                  Image.asset(ImageAssets.attatchIcon),
+                                  SizedBox(width: 20,),
+                                  Text("attachCertificate").tr(),
 
-                              ],
+                                ],
+                              ),
                             ),
-                          ))
+                          )),
+                      Visibility(
+                        visible: selectedServiceProvider == ServiceProvider.individual
+                          ? true
+                          : false,
+                          child:
+                          cubit.registerModel.experience_photo_path.isEmpty
+                              ? Container()
+                              : Image.file(
+                            File(
+                              cubit.registerModel.experience_photo_path,
+                            ),
+                            width: 140.0,
+                            height: 140.0,
+                            fit: BoxFit.cover,
+                          ),)
                     ],
                   ),
                   Column(children: [
@@ -466,20 +488,66 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         visible: selectedServiceProvider == ServiceProvider.office
                             ? true
                             : false,
-                        child: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 20),
-                          padding: EdgeInsets.symmetric(horizontal: 20,vertical: 15),
-                          decoration: BoxDecoration(
-                              color: Color(0xf007EFF),
-                              borderRadius: BorderRadius.circular(20)
-                          ),
-                          child: Row(
-                            children: [
-                              Image.asset(ImageAssets.attatchIcon),
-                              SizedBox(width: 20,),
-                              Text("attachPicActualSite").tr(),
+                        child: InkWell(
+                          onTap: () {
+                            buildAlertDialog("1");
+                          },
+                          child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 20),
+                            padding: EdgeInsets.symmetric(horizontal: 20,vertical: 15),
+                            decoration: BoxDecoration(
+                                color: Color(0xf007EFF),
+                                borderRadius: BorderRadius.circular(20)
+                            ),
+                            child: Row(
+                              children: [
+                                Image.asset(ImageAssets.attatchIcon),
+                                SizedBox(width: 20,),
+                                Text("attachPicActualSite").tr(),
 
-                            ],
+                              ],
+                            ),
+                          ),
+                        )),
+                    SizedBox(height: 30,),
+              Visibility(
+                        visible: selectedServiceProvider == ServiceProvider.office
+                            ? true:false,
+                       child:
+                cubit.registerModel.location_photo_path.isEmpty
+                ? Container()
+                  : Image.file(
+            File(
+            cubit.registerModel.location_photo_path,
+            ),
+            width: 140.0,
+            height: 140.0,
+            fit: BoxFit.cover,
+          ),),
+                    SizedBox(height: 30,),
+                    Visibility(
+                        visible: selectedServiceProvider == ServiceProvider.office
+                            ? true
+                            : false,
+                        child: InkWell(
+                          onTap: () {
+                            buildAlertDialog("2");
+                          },
+                          child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 20),
+                            padding: EdgeInsets.symmetric(horizontal: 20,vertical: 15),
+                            decoration: BoxDecoration(
+                                color: Color(0xf007EFF),
+                                borderRadius: BorderRadius.circular(20)
+                            ),
+                            child: Row(
+                              children: [
+                                Image.asset(ImageAssets.attatchIcon),
+                                SizedBox(width: 20,),
+                                Text("attachCommercial").tr(),
+
+                              ],
+                            ),
                           ),
                         )),
                     SizedBox(height: 30,),
@@ -487,22 +555,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         visible: selectedServiceProvider == ServiceProvider.office
                             ? true
                             : false,
-                        child: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 20),
-                          padding: EdgeInsets.symmetric(horizontal: 20,vertical: 15),
-                          decoration: BoxDecoration(
-                              color: Color(0xf007EFF),
-                              borderRadius: BorderRadius.circular(20)
-                          ),
-                          child: Row(
-                            children: [
-                              Image.asset(ImageAssets.attatchIcon),
-                              SizedBox(width: 20,),
-                              Text("attachCommercial").tr(),
-
-                            ],
-                          ),
-                        ))
+                      child:
+                      cubit.registerModel.commericial_photo_path.isEmpty
+                          ? Container()
+                          : Image.file(
+                        File(
+                          cubit.registerModel.commericial_photo_path,
+                        ),
+                        width: 140.0,
+                        height: 140.0,
+                        fit: BoxFit.cover,
+                      ),),
+                    SizedBox(height: 30,),
                   ],),
                   SizedBox(
                     height: 44,
@@ -512,7 +576,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: CustomButton(
                         text: "submit".tr(),
                         color: AppColors.primary,
-                        onClick: () {}),
+                        onClick: () {
+                          if(formKey.currentState!.validate()){
+                            cubit.register(context);
+                          }
+
+                        }),
                   ),
                   SizedBox(
                     height: 20,
@@ -524,5 +593,85 @@ class _SignUpScreenState extends State<SignUpScreen> {
         },
       ),
     );
+  }
+  buildAlertDialog(String type) {
+    return showDialog(
+        context: context,
+
+        builder: (c) {
+          return BlocBuilder<RegisterCubit, RegisterState>(
+  builder: (context, state) {
+    return AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16.0)),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'choose_photo'.tr(),
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.black),
+                ),
+                const SizedBox(
+                  height: 16.0,
+                ),
+                Container(
+                  height: 1,
+                  color: AppColors.gray4,
+                ),
+                const SizedBox(
+                  height: 24.0,
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                    context.read<RegisterCubit>().pickImage(type: 'camera',type1: type);
+                  },
+                  child: Text(
+                    'camera'.tr(),
+                    style: TextStyle(fontSize: 18.0, color: AppColors.black),
+                  ),
+                ),
+                const SizedBox(
+                  height: 12.0,
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                    context.read<RegisterCubit>().pickImage(type: 'gallery',type1:type );
+                  },
+                  child: Text(
+                    'gallery'.tr(),
+                    style: TextStyle(fontSize: 18.0, color: AppColors.black),
+                  ),
+                ),
+                const SizedBox(
+                  height: 24.0,
+                ),
+                Container(
+                  height: 1,
+                  color: AppColors.gray4,
+                ),
+                const SizedBox(
+                  height: 16.0,
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    'cancel'.tr(),
+                    style: TextStyle(
+                        fontSize: 18.0, color: AppColors.primary),
+                  ),
+                ),
+              ],
+            ),
+          );
+  },
+);
+        });
   }
 }

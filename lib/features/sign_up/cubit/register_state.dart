@@ -12,4 +12,6 @@ class ProviderRegisterServiceTypeLoaded extends RegisterState {}
 class ProviderRegisterTypeLoaded extends RegisterState {}
 class ProviderRegisterServiceTypeError extends RegisterState {}
 class OnRegisterVaild extends RegisterState {}
+class RegisterFailure extends RegisterState {}
 class OnLoginVaildFaild extends RegisterState {}
+class PhotoPicked extends RegisterState {}
