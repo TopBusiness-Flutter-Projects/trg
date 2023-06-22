@@ -9,6 +9,7 @@ import 'package:trj/features/splash/presentation/screens/splash_screen.dart';
 
 
 import '../../core/utils/app_strings.dart';
+import '../../features/NavigationProviderBottom/screens/navigation_provider_bottom.dart';
 import '../../features/filter_providers/presentation/screens/provider_filter.dart';
 import '../../features/navigation_bottom/screens/navigation_bottom.dart';
 import '../../features/onboarding/screens/onboarding_screen.dart';
@@ -26,6 +27,7 @@ class Routes {
   static const String paperexamRegisterRoute = '/paperexamRegister';
   static const String paperdetialsexamRegisterRoute = '/paperdetailsexamRegister';
   static const String homePageScreenRoute = '/homePageScreen';
+  static const String providerhomePageScreenRoute = '/providerhomePageScreen';
   static const String newPasswordScreenRoute = '/newPasswordScreen';
   static const String monthplanPageScreenRoute = '/monthplanPageScreen';
   static const String onboardingPageScreenRoute = '/onboardingPageScreen';
@@ -55,7 +57,7 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) => const ProviderFilterScreen(),
         );
       case Routes.loginRoute:
-        return MaterialPageRoute(builder: (context) => const Login(),
+        return MaterialPageRoute(builder: (context) =>  Login(),
 
         );
       case Routes.newPasswordScreenRoute:
@@ -83,6 +85,13 @@ class AppRoutes {
         alignment: Alignment.center,
         duration: const Duration(milliseconds: 1300),
         child: Zoom(),
+      );
+      case Routes.providerhomePageScreenRoute:
+      return PageTransition(
+        type: PageTransitionType.fade,
+        alignment: Alignment.center,
+        duration: const Duration(milliseconds: 1300),
+        child: ZoomPrpvider(),
       );
         case Routes.onboardingPageScreenRoute:
         return MaterialPageRoute(builder: (context) => const OnBoardingScreen(),

@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:meta/meta.dart';
 import 'package:trj/core/model/cities_model.dart';
 import 'package:trj/core/model/slider_model.dart';
@@ -16,6 +17,8 @@ class EmploymentCubit extends Cubit<EmploymentState> {
 
   List<CitiesModel> cities = [];
   List<ServicesTypeModel> serviceTypeList = [];
+
+  String? selectedIndividualType;
 
   EmploymentCubit(this.api) : super(EmploymentInitial()){
     getCities();
@@ -61,5 +64,11 @@ class EmploymentCubit extends Cubit<EmploymentState> {
   void changeServideType(ServicesTypeModel? value) {
  selectedServiceType=value;
  emit(ProvidersServiceTypeLoaded());
+  }
+
+  void changeIndividualType(String? value) {
+    selectedIndividualType=value;
+
+    emit(ProvidersServiceTypeLoaded());
   }
 }

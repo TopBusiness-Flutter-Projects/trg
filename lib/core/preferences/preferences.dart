@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../model/user_model.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_strings.dart';
 
@@ -83,30 +84,30 @@ class Preferences {
     }
   }
 
-  // Future<void> setUser(UserModel userModel) async {
-  //   SharedPreferences preferences = await SharedPreferences.getInstance();
-  //   preferences.setString(
-  //     'user',
-  //     jsonEncode(
-  //       UserModel.fromJson(
-  //         userModel.toJson(),
-  //       ),
-  //     ),
-  //   );
-  // }
+  Future<void> setUser(UserModel userModel) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    preferences.setString(
+      'user',
+      jsonEncode(
+        UserModel.fromJson(
+          userModel.toJson(),
+        ),
+      ),
+    );
+  }
 
-  // Future<UserModel> getUserModel() async {
-  //   SharedPreferences preferences = await SharedPreferences.getInstance();
-  //   String? jsonData = preferences.getString('user');
-  //   UserModel userModel;
-  //   if (jsonData != null) {
-  //     userModel = UserModel.fromJson(jsonDecode(jsonData));
-  //     // userModel.data?.isLoggedIn = true;
-  //   } else {
-  //     userModel = UserModel();
-  //   }
-  //   return userModel;
-  // }
+  Future<UserModel> getUserModel() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    String? jsonData = preferences.getString('user');
+    UserModel userModel;
+    if (jsonData != null) {
+      userModel = UserModel.fromJson(jsonDecode(jsonData));
+      // userModel.data?.isLoggedIn = true;
+    } else {
+      userModel = UserModel();
+    }
+    return userModel;
+  }
   //
   // Future<void> setexam(ExamAnswerListModel examAnswerListModel) async {
   //   SharedPreferences preferences = await SharedPreferences.getInstance();

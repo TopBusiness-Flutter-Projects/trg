@@ -16,7 +16,7 @@ class ProviderType extends StatefulWidget {
 }
 
 class _ProviderTypeState extends State<ProviderType> {
-List<String> providerTypes=['office'.tr(),'person'.tr()];
+List<String> providerTypes=['office'.tr(),'individual'.tr()];
   @override
   Widget build(BuildContext context) {
     EmploymentCubit cubit=context.read<EmploymentCubit>();
@@ -45,7 +45,7 @@ List<String> providerTypes=['office'.tr(),'person'.tr()];
                     ),
                     Expanded(
                       child: Text(
-                        'Select Item',
+                        'select_translator_type'.tr(),
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
@@ -65,7 +65,7 @@ List<String> providerTypes=['office'.tr(),'person'.tr()];
                     style:  TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
-                      color: AppColors.gray8,
+                      color: AppColors.black,
                       decoration: TextDecoration.none
                     ),
                   ),

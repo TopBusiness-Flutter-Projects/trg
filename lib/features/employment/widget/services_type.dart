@@ -1,4 +1,5 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trj/core/model/cities_model.dart';
@@ -44,7 +45,7 @@ class _ServicesTypeState extends State<ServicesType> {
                     ),
                     Expanded(
                       child: Text(
-                        'Select Item',
+                        'select_translate_type'.tr(),
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
@@ -64,7 +65,7 @@ class _ServicesTypeState extends State<ServicesType> {
                     style:  TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
-                      color: AppColors.gray8,
+                      color: AppColors.black,
                       decoration: TextDecoration.none
                     ),
                   ),

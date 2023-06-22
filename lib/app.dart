@@ -7,6 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:quick_actions/quick_actions.dart';
+import 'package:trj/features/login/cubit/login_cubit.dart';
+import 'package:trj/features/sign_up/cubit/register_cubit.dart';
 // import 'package:screenshot_callback/screenshot_callback.dart';
 
 import 'config/routes/app_routes.dart';
@@ -23,6 +25,7 @@ import 'core/utils/toast_message_method.dart';
 
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
+import 'features/NavigationProviderBottom/cubit/navigation_provider_cubit.dart';
 import 'features/employment/cubit/employment_cubit.dart';
 import 'features/filter_providers/cubit/provider_filter_cubit.dart';
 import 'features/home/cubit/home_cubit.dart';
@@ -157,6 +160,15 @@ class _ElmazoonState extends State<Elmazoon> {
         ),
         BlocProvider(
           create: (_) => injector.serviceLocator<ProviderSearchCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => injector.serviceLocator<LoginCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => injector.serviceLocator<RegisterCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => injector.serviceLocator<NavigationProviderCubit>(),
         ),
 
       //   BlocProvider(

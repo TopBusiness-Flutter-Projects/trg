@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:trj/core/model/service_type_data_model.dart';
+import 'package:trj/features/login/model/login_model.dart';
 import '../api/base_api_consumer.dart';
 import '../api/end_points.dart';
 import '../error/exceptions.dart';
@@ -9,6 +10,7 @@ import '../error/failures.dart';
 import '../model/cities_data_model.dart';
 import '../model/provider_data_model.dart';
 import '../model/slider_data_model.dart';
+import '../model/user_model.dart';
 import '../preferences/preferences.dart';
 
 class ServiceApi {
@@ -30,17 +32,18 @@ class ServiceApi {
       return Left(ServerFailure());
     }
   }
-  Future<Either<Failure, ProviderDataModel>> getProvidersProviderFilter(String search_key,int providerType,int cityId,int servideTypeId
+  Future<Either<Failure, ProviderDataModel>> getProvidersProviderFilter(String search_key,int providerType,int cityId,int servideTypeId,int person_type
      ) async {
     // String lan = await Preferences.in!stance.getSavedLang();
     try {
       final response = await dio.get(
         EndPoints.providerFilterListUrl ,
         queryParameters: {
-          "city_id":cityId!=0? cityId:null,
+          "city_id":cityId!=0? cityId:"",
           "search_key":search_key,
-          "translation_type_id":servideTypeId!=0?servideTypeId:null,
-          "provider_type":providerType!=0?providerType:null
+          "translation_type_id":servideTypeId!=0?servideTypeId:"",
+          "provider_type":providerType!=0?providerType:"",
+          "person_type":person_type!=0?person_type:""
         }
 
       );
@@ -94,5 +97,18 @@ class ServiceApi {
     }
   }
 
-
+  Future<Either<Failure, UserModel>> postLogin(LoginModel model) async {
+    try {
+      final response = await dio.post(
+        EndPoints.loginUrl,
+        body: {
+          'email': model.email,
+          'password': model.password,
+        },
+      );
+      return Right(UserModel.fromJson(response));
+    } on ServerException {
+      return Left(ServerFailure());
+    }
+  }
 }

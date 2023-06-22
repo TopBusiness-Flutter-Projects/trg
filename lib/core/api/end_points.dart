@@ -6,6 +6,8 @@ class EndPoints {
   static const String sliderhomeListUrl = '${baseUrl}sliders';
   static const String citiesListUrl = '${baseUrl}cities';
   static const String serviceTypeListUrl = '${baseUrl}translation_types';
+  static const String loginUrl = '${baseUrl}provider/auth/login';
+
 
 
 

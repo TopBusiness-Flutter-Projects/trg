@@ -12,10 +12,15 @@ class ImageAssets {
   static const String onboard3Image = '$imagePath/onboard3.png';
   static const String loginLogoImage = '$imagePath/login_logo.png';
   static const String facebookImage = '$imagePath/facebook.png';
-  static const String websiteImage = '$imagePath/website_icon.png';
-  static const String instagramImage = '$imagePath/insta.png';
+  static const String linkedindImage = '$imagePath/linkedin.png';
+  static const String instagramImage = '$imagePath/instagram.png';
+  static const String whatsappImage = '$imagePath/whatsapp.png';
   static const String twitterImage = '$imagePath/twitter.png';
   static const String youtubeImage = '$imagePath/youtube.png';
+  static const String shareImage = '$imagePath/share.png';
+  static const String rateImage = '$imagePath/rate.png';
+  static const String callImage = '$imagePath/call.png';
+  static const String languageImage = '$imagePath/language.png';
 //icons
   static const String homeIcon = '$iconsPath/home.svg';
   static const String jobIcon = '$iconsPath/job.svg';

@@ -8,6 +8,8 @@ class ProviderModel {
   int providerType;
   dynamic aboutMe;
   dynamic previousExperience;
+  dynamic watts;
+  dynamic experience;
   dynamic city;
 
   ProviderModel({
@@ -21,6 +23,8 @@ class ProviderModel {
     this.aboutMe,
     this.previousExperience,
     this.city,
+    this.watts,
+    this.experience,
   });
 
   factory ProviderModel.fromJson(Map<String, dynamic> json) => ProviderModel(
@@ -29,6 +33,8 @@ class ProviderModel {
     phone: json["phone"],
     email: json["email"],
     image: json["image"],
+    watts: json["watts"],
+    experience: json["experience"],
     address: json["address"],
     providerType: json["provider_type"]??0,
     aboutMe: json["about_me"]??'',
@@ -47,5 +53,7 @@ class ProviderModel {
     "about_me": aboutMe,
     "previous_experience": previousExperience,
     "city": city,
+    "watts": watts,
+    "experience": experience,
   };
 }

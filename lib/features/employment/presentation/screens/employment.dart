@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trj/core/utils/app_colors.dart';
 import 'package:trj/core/widgets/custom_button.dart';
+import 'package:trj/features/employment/widget/individual_type.dart';
 
 import '../../../../config/routes/app_routes.dart';
 import '../../../filter_providers/cubit/provider_filter_cubit.dart';
@@ -24,57 +25,75 @@ class _EmploymentState extends State<Employment> {
     EmploymentCubit cubit = context.read<EmploymentCubit>();
 
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 20,
-            ),
-            Center(
-              child: Text(
-                "select_provider".tr(),
-                style: TextStyle(
-                    color: AppColors.orangeThirdPrimary,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Cities(),
-            SizedBox(
-              height: 20,
-            ),
-            ServicesType(),
-            SizedBox(
-              height: 20,
-            ),
-            ProviderType(),
-            SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: CustomButton(
-                text: "search".tr(),
-                color: AppColors.primary,
-                onClick: () {
-                  context
-                      .read<ProviderFilterCubit>()
-                      .getProvidersProviderFilter(
+      body: BlocBuilder<EmploymentCubit, EmploymentState>(
+        builder: (context, state) {
+          return SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                Center(
+                  child: Text(
+                    "select_provider".tr(),
+                    style: TextStyle(
+                        color: AppColors.orangeThirdPrimary,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Cities(),
+                SizedBox(
+                  height: 20,
+                ),
+                ServicesType(),
+                SizedBox(
+                  height: 20,
+                ),
+                ProviderType(),
+                SizedBox(
+                  height: 20,
+                ),
+                Visibility(
+                    visible: cubit.selectedProviderType == 'individual'.tr()
+                        ? true
+                        : false,
+                    child: IndividualType()),
+                SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CustomButton(
+                    text: "search".tr(),
+                    color: AppColors.primary,
+                    onClick: () {
+                      context
+                          .read<ProviderFilterCubit>()
+                          .getProvidersProviderFilter(
                           cubit.selectedCity!.id,
                           cubit.selectedServiceType!.id,
-                          cubit.selectedProviderType == "person".tr() ? 2 : 1,
-                          "");
-                  Navigator.pushNamed(context, Routes.providerFilterRoute);
-                },
-              ),
-            )
-          ],
-        ),
+                          cubit.selectedProviderType == "individual".tr()
+                              ? 2
+                              : 1,
+
+                          "",
+                          cubit.selectedIndividualType == "content_writer".tr()
+                              ? 2
+                              : 1);
+                      Navigator.pushNamed(context, Routes.providerFilterRoute);
+                    },
+                  ),
+                )
+              ],
+            ),
+          );
+        },
       ),
     );
   }

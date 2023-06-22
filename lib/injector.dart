@@ -1,3 +1,6 @@
+import 'package:trj/features/login/cubit/login_cubit.dart';
+import 'package:trj/features/sign_up/cubit/register_cubit.dart';
+
 import 'core/api/app_interceptors.dart';
 import 'core/api/base_api_consumer.dart';
 import 'core/api/dio_consumer.dart';
@@ -6,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
+import 'features/NavigationProviderBottom/cubit/navigation_provider_cubit.dart';
 import 'features/employment/cubit/employment_cubit.dart';
 import 'features/filter_providers/cubit/provider_filter_cubit.dart';
 import 'features/home/cubit/home_cubit.dart';
@@ -32,10 +36,19 @@ Future<void> setup() async {
     () => ProviderSearchCubit(serviceLocator()),
   );
   serviceLocator.registerFactory(
+    () => LoginCubit(serviceLocator()),
+  );
+  serviceLocator.registerFactory(
+    () => RegisterCubit(serviceLocator()),
+  );
+  serviceLocator.registerFactory(
     () => OnBoardingCubit(),
   );
   serviceLocator.registerFactory(
     () => NavigationCubit(),
+  );
+  serviceLocator.registerFactory(
+    () => NavigationProviderCubit(),
   );
 
   ///////////////////////////////////////////////////////////////////////////////

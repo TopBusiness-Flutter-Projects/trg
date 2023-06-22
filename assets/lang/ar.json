@@ -7,7 +7,7 @@
   "fill_data": "املأ البيانات للتسجيل",
   "user_name": "اسم المستخدم",
   "save": "حفظ",
-  "office": "مكتب",
+  "office": "مكتب ترجمة معتمد",
   "individual": "فرد",
   "phone_number": "رقم الجوال",
   "prev_experience": "خبراتك السابقة",
@@ -27,9 +27,32 @@
   "select_provider": "تحديد مقدم الخدمة",
   "home": "الرئيسيه",
   "employment": "توظيف",
-  "person": "شخص",
   "search": "بحث",
-  "no_data": "لا يوجد نتائج"
+  "no_data": "لا يوجد نتائج",
+  "language": "لغة التطبيق",
+  "share": "دعوه",
+  "rate": "تقييم",
+  "contact_us": "اتصل بنا",
+  "content_writer": "كاتب محتوى",
+  "lang_edit": "تحرير لغوى",
+  "city": "المدينة",
+  "address": "العنوان",
+  "provider": "المقدم",
+  "experience": "الخبرة",
+  "phone": "الجوال",
+  "previous_work": "نماذج من اعمالي السابقة",
+  "selcet_city": "حدد المدينة",
+  "select_translate_type": "حدد نوع الترجمه",
+  "select_translator_type": "حدد  نوع المترجم",
+  "select_idvividual_type": "حدد نوع الفرد",
+  "whats_app": "واتس اب",
+  "call": "اتصال",
+  "amanh": "امانة تساله عليها\n سيكلفك الاتصال مبلغ 5 ريال يتم تحويلها الى حساب....",
+  "close": "إغلاق",
+  "invaild_email": "بريد الكترونى خاطئ",
+  "field_reguired": "الحقل مطلوب"
+
+
 
 
 }

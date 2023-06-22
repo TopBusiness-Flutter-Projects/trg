@@ -37,17 +37,7 @@ class _SplashScreenState extends State<SplashScreen>
   Future<void> _getStoreUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     if (prefs.getString('onBoarding') != null) {
-      if (prefs.getString('user') != null) {
 
-        Navigator.pushNamedAndRemoveUntil(
-          context,
-          Routes.homePageScreenRoute,
-          ModalRoute.withName(
-            Routes.initialRoute,
-          ),
-        );
-
-      } else {
         Navigator.pushNamedAndRemoveUntil(
           context,
           Routes.chooseTypeRoute,
@@ -55,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen>
             Routes.initialRoute,
           ),
         );
-      }
+
     } else {
       Navigator.pushReplacementNamed(
         context,

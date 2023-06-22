@@ -28,7 +28,7 @@ class _ZoomState extends State<Zoom> {
     String lang = EasyLocalization.of(context)!.locale.languageCode;
     return ZoomDrawer(
       controller: z,
-      isRtl: true,
+      isRtl: EasyLocalization.of(context)!.currentLocale!.languageCode=='ar'?true:false,
       borderRadius: 25,
       style: DrawerStyle.defaultStyle,
       openCurve: Curves.linearToEaseOut,

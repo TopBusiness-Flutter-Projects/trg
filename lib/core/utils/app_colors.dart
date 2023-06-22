@@ -70,6 +70,7 @@ class AppColors {
   static Color orange = HexColor('#FE7C04');
   static Color orange1 = HexColor('#E6AE15');
   static Color orangelight = HexColor('#FFEAD7');
+  static Color transparent1 = HexColor('#0000000');
   static Color opacityWhite = Colors.white.withOpacity(0.5);
   static Color transparent = Colors.transparent;
 

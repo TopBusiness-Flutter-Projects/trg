@@ -28,7 +28,29 @@
   "select_provider": "Select Provider",
   "home": "Home",
   "employment": "Employment",
-  "person": "Person",
+
   "search": "Search",
-  "no_data": "No Data Found"
+  "no_data": "No Data Found",
+  "language": "App Language",
+  "share": "Invite",
+  "rate": "Rate",
+  "contact_us": "Contact Us",
+  "content_writer": "Content writer",
+  "lang_edit": "Linguistic editing",
+  "address": "Address",
+  "provider": "Provider",
+  "experience": "Experience",
+  "phone": "Phone",
+  "previous_work": "Samples of my previous work",
+  "selcet_city": "Select City",
+  "select_translate_type": "Select Translate Type",
+  "select_translator_type": "Select Translator Type",
+  "select_idvividual_type": "Select Individual Type",
+  "whats_app": "Whats App",
+  "call": "Call",
+  "amanh": "Amanah asks him about it\n The call will cost you an amount of 5 riyals, which will be transferred to an account....",
+  "close": "Close",
+  "invaild_email": "Invaild Email",
+  "field_reguired": "Field Required"
+
 }
