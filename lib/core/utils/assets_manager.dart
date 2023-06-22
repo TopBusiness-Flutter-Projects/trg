@@ -25,6 +25,8 @@ class ImageAssets {
   static const String homeIcon = '$iconsPath/home.svg';
   static const String jobIcon = '$iconsPath/job.svg';
   static const String menuIcon = '$iconsPath/menu.svg';
+  static const String yearsExperienceIcon = '$iconsPath/years_experience.png';
+  static const String attatchIcon = '$iconsPath/attatch.png';
   //*****************************************************************
 static const String profileIcon = "$iconsPath/profile_icon.png";
 static const String translateIcon = "$iconsPath/translate_icon.png";

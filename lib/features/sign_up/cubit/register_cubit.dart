@@ -1,11 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:trj/features/sign_up/model/register_model.dart';
 
 import '../../../core/model/cities_model.dart';
 import '../../../core/model/service_type_model.dart';
 import '../../../core/remote/service.dart';
+import '../screens/sign_up.dart';
 
 part 'register_state.dart';
 
@@ -13,7 +15,6 @@ class RegisterCubit extends Cubit<RegisterState> {
   final ServiceApi api;
   CitiesModel? selectedCity;
   ServicesTypeModel? selectedServiceType;
-  String? selectedProviderType;
   RegisterModel registerModel = RegisterModel();
   TextEditingController emailControl = TextEditingController();
   TextEditingController passwordControl = TextEditingController();
@@ -24,7 +25,6 @@ class RegisterCubit extends Cubit<RegisterState> {
   List<CitiesModel> cities = [];
   List<ServicesTypeModel> serviceTypeList = [];
 
-  String? selectedIndividualType;
 
   RegisterCubit(this.api) : super(RegisterInitial()){
     getCities();
@@ -63,9 +63,16 @@ class RegisterCubit extends Cubit<RegisterState> {
 
 
 
-  void changeServideType(ServicesTypeModel? value) {
+  void changeServiceType(ServicesTypeModel? value) {
     selectedServiceType=value;
     emit(ProviderRegisterServiceTypeLoaded());
+  }
+
+  void changeServiceProviderType(IndividualProvider? value) {
+    //selectedProviderType=value;
+    selectedIndividualProvider = value!;
+    emit(ProviderRegisterTypeLoaded());
+
   }
   void checkValidLoginData() {
     if (registerModel.isDataValid()) {
@@ -82,9 +89,47 @@ class RegisterCubit extends Cubit<RegisterState> {
     isHidden = !isHidden;
     emit(RegisterInitial());
   }
-  void changeProviderType(String? value) {
-    selectedProviderType=value;
+  void changeProviderType(ServiceProvider? value) {
+    //selectedProviderType=value;
+    selectedServiceProvider = value!;
     emit(ProviderRegisterServiceTypeLoaded());
 
+  }
+
+  imagePicker(BuildContext context) {
+    //emit(logoImageLoading());
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return SafeArea(
+          child: Container(
+            child: Wrap(
+              children: <Widget>[
+                ListTile(
+                  leading: Icon(Icons.photo_library),
+                  title: Text('Pick from gallery'),
+                  // onTap: () async {
+                  //   serviceLogoImage =
+                  //   await picker.pickImage(source: ImageSource.gallery);
+                  //   emit(logoImageSuccess());
+                  //   Navigator.of(context).pop();
+                  // },
+                ),
+                ListTile(
+                  leading: Icon(Icons.camera_alt),
+                  title: Text('Take a photo'),
+                  // onTap: () async {
+                  //   serviceLogoImage =
+                  //   await picker.pickImage(source: ImageSource.camera);
+                  //   emit(logoImageSuccess());
+                  //   Navigator.of(context).pop();
+                  // },
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 }

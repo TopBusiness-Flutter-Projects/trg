@@ -9,6 +9,7 @@ class ProviderRegisterCitiesLoaded extends RegisterState {}
 class ProviderRegisterCitiesError extends RegisterState {}
 class ProviderRegisterServiceTypeLoading extends RegisterState {}
 class ProviderRegisterServiceTypeLoaded extends RegisterState {}
+class ProviderRegisterTypeLoaded extends RegisterState {}
 class ProviderRegisterServiceTypeError extends RegisterState {}
 class OnRegisterVaild extends RegisterState {}
 class OnLoginVaildFaild extends RegisterState {}

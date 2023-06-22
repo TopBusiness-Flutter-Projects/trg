@@ -64,7 +64,7 @@ class _ServicesTypeState extends State<ServicesType> {
                   .toList(),
               value: cubit.selectedServiceType,
               onChanged: (value) {
-                cubit.changeServideType(value);
+                cubit.changeServiceType(value);
               },
               buttonStyleData: ButtonStyleData(
                 height: 50,
