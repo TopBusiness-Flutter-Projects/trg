@@ -69,6 +69,7 @@ class User {
   String image;
   int userType;
   int provider_type;
+  int translation_type_id;
   dynamic aboutMe;
   dynamic previousExperience;
   dynamic watts;
@@ -82,6 +83,7 @@ class User {
     required this.provider_type,
     required this.address,
     required this.status,
+    required this.translation_type_id,
     required this.image,
     required this.userType,
     this.aboutMe,
@@ -100,6 +102,7 @@ class User {
     status: json["status"],
     image: json["image"],
     userType: json["user_type"],
+    translation_type_id: json["translation_type_id"]??0,
     watts: json["watts"],
     experience: json["experience"],
     aboutMe: json["about_me"]??'',
@@ -117,6 +120,7 @@ class User {
     "status": status,
     "image": image,
     "user_type": userType,
+    "translation_type_id": translation_type_id,
     "about_me": aboutMe,
     "previous_experience": previousExperience,
     "city": city,

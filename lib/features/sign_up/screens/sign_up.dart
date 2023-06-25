@@ -69,6 +69,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       cursorColor: AppColors.primary,
                       keyboardType: TextInputType.text,
                       textInputAction: TextInputAction.next,
+                      controller: cubit.nameControl,
                       onChanged: (data) {
                         formKey.currentState!.validate();
                         cubit.registerModel.name = data;
@@ -203,6 +204,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   cursorColor: AppColors.primary,
                   keyboardType: TextInputType.phone,
                   textInputAction: TextInputAction.next,
+                     controller: cubit.phoneControl,
                   onChanged: (data) {
                     formKey.currentState!.validate();
                     cubit.registerModel.phone = data;
@@ -238,6 +240,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   cursorColor: AppColors.primary,
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.next,
+                  controller: cubit.experienceControl,
                   onChanged: (data) {
                     formKey.currentState!.validate();
                     cubit.registerModel.experienceYears = data;
@@ -273,6 +276,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   cursorColor: AppColors.primary,
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.next,
+                  controller: cubit.addressControl,
                   onChanged: (data) {
                     formKey.currentState!.validate();
                     cubit.registerModel.address = data;
@@ -310,6 +314,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       cursorColor: AppColors.primary,
                       keyboardType: TextInputType.text,
                       textInputAction: TextInputAction.next,
+                      controller: cubit.previousexperienceControl,
                       onChanged: (data) {
                         formKey.currentState!.validate();
                         cubit.registerModel.previousExperience = data;
@@ -349,6 +354,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       cursorColor: AppColors.primary,
                       keyboardType: TextInputType.text,
                       textInputAction: TextInputAction.next,
+                      controller: cubit.aboutmeControl,
                       onChanged: (data) {
                         formKey.currentState!.validate();
                         cubit.registerModel.aboutMe = data;

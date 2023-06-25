@@ -45,10 +45,8 @@ class _ChooseTypeState extends State<ChooseType> {
                     text: "عميل",
                     color: AppColors.primary,
                     onClick: (){
-                      Navigator.pushNamedAndRemoveUntil(context, Routes.homePageScreenRoute,
-                        ModalRoute.withName(
-                        Routes.initialRoute,
-                      ),);
+                      Navigator.pushNamed(context, Routes.homePageScreenRoute,
+                     );
                     }),
               ),
               const SizedBox(height: 20,)
@@ -65,12 +63,9 @@ class _ChooseTypeState extends State<ChooseType> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
       if (prefs.getString('user') != null) {
 
-        Navigator.pushNamedAndRemoveUntil(
+        Navigator.pushNamed(
           context,
-          Routes.providerhomePageScreenRoute,
-          ModalRoute.withName(
-            Routes.initialRoute,
-          ),
+          Routes.providerhomePageScreenRoute
         );
 
       } else {

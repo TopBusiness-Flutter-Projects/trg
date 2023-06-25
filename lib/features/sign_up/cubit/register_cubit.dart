@@ -1,3 +1,4 @@
+
 import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
@@ -31,6 +32,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   TextEditingController addressControl = TextEditingController();
   TextEditingController aboutmeControl = TextEditingController();
   TextEditingController experienceControl = TextEditingController();
+  TextEditingController phoneControl = TextEditingController();
 
   XFile? imageFile;
 
@@ -40,25 +42,32 @@ class RegisterCubit extends Cubit<RegisterState> {
   List<CitiesModel> cities = [];
   List<ServicesTypeModel> serviceTypeList = [];
 
-  String imageType='';
+  String imageType = '';
 
   UserModel? userModel;
 
-
-  RegisterCubit(this.api) : super(RegisterInitial()){
+  RegisterCubit(this.api) : super(RegisterInitial()) {
     getCities();
     getServiceType();
     getUserData();
   }
 
   Future<void> getUserData() async {
-    userModel=await Preferences.instance.getUserModel();
- if(userModel!.data!=null){
+    userModel = await Preferences.instance.getUserModel();
+    if (userModel!.data != null) {
+      emailControl.text = userModel!.data!.user.email;
+      nameControl.text = userModel!.data!.user.name;
+      phoneControl.text = userModel!.data!.user.phone;
+      experienceControl.text = userModel!.data!.user.experience;
+      previousexperienceControl.text = userModel!.data!.user.previousExperience;
+      aboutmeControl.text = userModel!.data!.user.aboutMe;
+      addressControl.text = userModel!.data!.user.address;
 
- }
- emit(OnRegisterData());
+    }
+    emit(OnRegisterData());
   }
-  pickImage({required String type,required String type1}) async {
+
+  pickImage({required String type, required String type1}) async {
     imageFile = await ImagePicker().pickImage(
         source: type == 'camera' ? ImageSource.camera : ImageSource.gallery);
     imageType = 'file';
@@ -74,16 +83,12 @@ class RegisterCubit extends Cubit<RegisterState> {
         cropStyle: CropStyle.rectangle,
         compressFormat: ImageCompressFormat.png,
         compressQuality: 90);
-    if(type1=="1") {
+    if (type1 == "1") {
       registerModel.location_photo_path = croppedFile!.path;
-    }
-    else if (type1=="2"){
+    } else if (type1 == "2") {
       registerModel.commericial_photo_path = croppedFile!.path;
-
-    }
-    else{
+    } else {
       registerModel.experience_photo_path = croppedFile!.path;
-
     }
     emit(PhotoPicked());
     checkValidLoginData();
@@ -93,12 +98,12 @@ class RegisterCubit extends Cubit<RegisterState> {
     emit(ProviderRegisterCitiesLoading());
     final response = await api.getCities();
     response.fold(
-          (l) => emit(ProviderRegisterCitiesError()),
-          (r) {
+      (l) => emit(ProviderRegisterCitiesError()),
+      (r) {
         cities = r.data!;
-        if(userModel!.data!=null){
-          for(int i=0;i<cities.length;i++){
-            if(cities.elementAt(i).name==userModel!.data!.user.city){
+        if (userModel!.data != null) {
+          for (int i = 0; i < cities.length; i++) {
+            if (cities.elementAt(i).name == userModel!.data!.user.city) {
               changeCity(cities.elementAt(i));
             }
           }
@@ -112,12 +117,13 @@ class RegisterCubit extends Cubit<RegisterState> {
     emit(ProviderRegisterServiceTypeLoading());
     final response = await api.getservieType();
     response.fold(
-          (l) => emit(ProviderRegisterServiceTypeError()),
-          (r) {
+      (l) => emit(ProviderRegisterServiceTypeError()),
+      (r) {
         serviceTypeList = r.data!;
-        if(userModel!.data!=null){
-          for(int i=0;i<serviceTypeList.length;i++){
-            if(serviceTypeList.elementAt(i).name==userModel!.data!.user.){
+        if (userModel!.data != null) {
+          for (int i = 0; i < serviceTypeList.length; i++) {
+            if (serviceTypeList.elementAt(i).id ==
+                userModel!.data!.user.translation_type_id) {
               changeServiceType(serviceTypeList.elementAt(i));
             }
           }
@@ -128,15 +134,12 @@ class RegisterCubit extends Cubit<RegisterState> {
   }
 
   void changeCity(CitiesModel? value) {
-    selectedCity=value;
+    selectedCity = value;
     emit(ProviderRegisterCitiesLoaded());
-
   }
 
-
-
   void changeServiceType(ServicesTypeModel? value) {
-    selectedServiceType=value;
+    selectedServiceType = value;
     emit(ProviderRegisterServiceTypeLoaded());
   }
 
@@ -144,8 +147,8 @@ class RegisterCubit extends Cubit<RegisterState> {
     //selectedProviderType=value;
     selectedIndividualProvider = value!;
     emit(ProviderRegisterTypeLoaded());
-
   }
+
   void checkValidLoginData() {
     if (registerModel.isDataValid()) {
       isLoginValid = true;
@@ -161,18 +164,19 @@ class RegisterCubit extends Cubit<RegisterState> {
     isHidden = !isHidden;
     emit(RegisterInitial());
   }
+
   void changeProviderType(ServiceProvider? value) {
     //selectedProviderType=value;
     selectedServiceProvider = value!;
     emit(ProviderRegisterServiceTypeLoaded());
-
   }
+
   void register(BuildContext context) async {
     AppWidget.createProgressDialog(context, 'wait'.tr());
     final response = await api.registerUser(registerModel);
     response.fold(
-          (failure) => {Navigator.pop(context), emit(RegisterFailure())},
-          (loginModel) {
+      (failure) => {Navigator.pop(context), emit(RegisterFailure())},
+      (loginModel) {
         if (loginModel.code == 409) {
           Navigator.pop(context);
           toastMessage("exists_email".tr(), context);
@@ -181,12 +185,12 @@ class RegisterCubit extends Cubit<RegisterState> {
         } else if (loginModel.code == 200) {
           Navigator.pop(context);
           Preferences.instance.setUser(loginModel).then((value) {
-            Navigator.pushNamedAndRemoveUntil(context, Routes.providerhomePageScreenRoute, (route) => false);
+            Navigator.pushNamedAndRemoveUntil(
+                context, Routes.providerhomePageScreenRoute, (route) => false);
             // emit(OnLoginSuccess(response));
           });
         }
       },
     );
   }
-
 }

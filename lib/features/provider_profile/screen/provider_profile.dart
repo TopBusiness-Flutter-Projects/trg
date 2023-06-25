@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trj/config/routes/app_routes.dart';
 import 'package:trj/core/widgets/show_loading_indicator.dart';
 import 'package:trj/features/provider_profile/cubit/provider_data_cubit.dart';
 
@@ -61,6 +62,11 @@ class ProviderProfile extends StatelessWidget {
                                     padding: const EdgeInsets.all(8.0),
                                     child: Column(
                                       children: [
+                                        InkWell(
+                                          onTap: () {
+                                            Navigator.pushNamed(context, Routes.signUpScreenRoute);
+                                          },
+                                            child: Icon(Icons.edit)),
                                         Container(
                                           width: 100,
                                           height: 100,

@@ -30,7 +30,7 @@ class LoginCubit extends Cubit<LoginState> {
     response.fold(
       (failure) => {Navigator.pop(context), emit(LoginFailure())},
       (loginModel) {
-        if (loginModel.code == 411) {
+        if (loginModel.code == 406||loginModel.code == 411) {
           Navigator.pop(context);
           toastMessage("invaild_email".tr(), context);
           // errorGetBar(translateText(AppStrings.noEmailError, context));

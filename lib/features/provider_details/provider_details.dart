@@ -77,7 +77,7 @@ class _ProviderDetailsState extends State<ProviderDetails> {
                                         width: 30,
                                       ),
                                       Text(
-                                      widget.providerModel.city,
+                                      widget.providerModel.city??'',
                                         style: TextStyle(
                                             fontSize: 14, color: AppColors.black),
                                       ),
@@ -214,12 +214,13 @@ class _ProviderDetailsState extends State<ProviderDetails> {
                                       SizedBox(
                                         width: 30,
                                       ),
-                                      Text(
-                                        widget.providerModel.previousExperience,
-                                        style: TextStyle(
-                                            fontSize: 14, color: AppColors.black),
-                                      ),
+
                                     ],
+                                  ),
+                                  Text(
+                                    widget.providerModel.previousExperience,
+                                    style: TextStyle(
+                                        fontSize: 14, color: AppColors.black),
                                   ),
                                   SizedBox(
                                     height: 20,
@@ -245,12 +246,15 @@ class _ProviderDetailsState extends State<ProviderDetails> {
                                     ],
                                   ),
                                   SizedBox(
-                                    height: 20,
+                                    height: 10,
                                   ),
                                   Text(
                                     widget.providerModel.aboutMe,
                                     style: TextStyle(
                                         fontSize: 14, color: AppColors.orangeThirdPrimary),
+                                  ),
+                                  SizedBox(
+                                    height: 30,
                                   ),
                                 ],
                               ),
