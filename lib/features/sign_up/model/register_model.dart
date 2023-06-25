@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:email_validator/email_validator.dart';
 
 class RegisterModel {
+  int user_id=0;
   String email = '';
   String password = '';
   String name = '';
@@ -20,8 +21,8 @@ class RegisterModel {
 
   bool isDataValid() {
     if (EmailValidator.validate(email) &&
-        !password.isEmpty &&
-        password.length >= 6 &&
+        (user_id!=0||(!password.isEmpty &&
+        password.length >= 6) )&&
         name.isNotEmpty &&
         service_id != 0 &&
         city_id != 0 &&
@@ -30,13 +31,13 @@ class RegisterModel {
         aboutMe.isNotEmpty &&
         experienceYears.isNotEmpty &&
         address.isNotEmpty&&
-        providerType != 0 &&
+        (user_id!=0||( providerType != 0 &&
         ((providerType == 1 &&
                 commericial_photo_path.isNotEmpty &&
                 location_photo_path.isNotEmpty) ||
             (providerType == 1 &&
                 individualType != 0 &&
-                experience_photo_path.isNotEmpty))) {
+                experience_photo_path.isNotEmpty))))) {
       return true;
     }
 
@@ -67,5 +68,18 @@ class RegisterModel {
           "certificate_image":
               await MultipartFile.fromFile(experience_photo_path)
         }
+      };
+  Future<Map<String, dynamic>> updateuserToJson() async => {
+        "phone": phone,
+        "email": email,
+        "name": name,
+        "password": password,
+        "city_id": city_id,
+        "translation_type_id": service_id,
+        "address":address,
+        "about_me": aboutMe,
+        "experience": experienceYears,
+        "previous_experience": previousExperience,
+
       };
 }
