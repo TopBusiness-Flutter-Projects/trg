@@ -147,7 +147,7 @@ class ProviderProfile extends StatelessWidget {
                       width: 30,
                     ),
                     Text(
-                      cubit.userModel!.data!.user.userType == 1
+                      cubit.userModel!.data!.user.provider_type == 1
                           ? 'office'
                           : "individual",
                       style: TextStyle(fontSize: 14, color: AppColors.black),

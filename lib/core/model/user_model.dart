@@ -68,6 +68,7 @@ class User {
   int status;
   String image;
   int userType;
+  int provider_type;
   dynamic aboutMe;
   dynamic previousExperience;
   dynamic watts;
@@ -78,6 +79,7 @@ class User {
     required this.name,
     required this.phone,
     required this.email,
+    required this.provider_type,
     required this.address,
     required this.status,
     required this.image,
@@ -103,6 +105,7 @@ class User {
     aboutMe: json["about_me"]??'',
     previousExperience: json["previous_experience"],
     city: json["city"],
+    provider_type: json["provider_type"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -119,6 +122,7 @@ class User {
     "city": city,
     "watts": watts,
     "experience": experience,
+    "provider_type": provider_type,
   };
 }
 

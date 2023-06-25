@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
+import 'package:trj/core/model/user_model.dart';
 import 'package:trj/features/sign_up/model/register_model.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
@@ -25,6 +26,12 @@ class RegisterCubit extends Cubit<RegisterState> {
   RegisterModel registerModel = RegisterModel();
   TextEditingController emailControl = TextEditingController();
   TextEditingController passwordControl = TextEditingController();
+  TextEditingController nameControl = TextEditingController();
+  TextEditingController previousexperienceControl = TextEditingController();
+  TextEditingController addressControl = TextEditingController();
+  TextEditingController aboutmeControl = TextEditingController();
+  TextEditingController experienceControl = TextEditingController();
+
   XFile? imageFile;
 
   bool isLoginValid = false;
@@ -35,10 +42,21 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   String imageType='';
 
+  UserModel? userModel;
+
 
   RegisterCubit(this.api) : super(RegisterInitial()){
     getCities();
     getServiceType();
+    getUserData();
+  }
+
+  Future<void> getUserData() async {
+    userModel=await Preferences.instance.getUserModel();
+ if(userModel!.data!=null){
+
+ }
+ emit(OnRegisterData());
   }
   pickImage({required String type,required String type1}) async {
     imageFile = await ImagePicker().pickImage(
@@ -78,6 +96,13 @@ class RegisterCubit extends Cubit<RegisterState> {
           (l) => emit(ProviderRegisterCitiesError()),
           (r) {
         cities = r.data!;
+        if(userModel!.data!=null){
+          for(int i=0;i<cities.length;i++){
+            if(cities.elementAt(i).name==userModel!.data!.user.city){
+              changeCity(cities.elementAt(i));
+            }
+          }
+        }
         emit(ProviderRegisterCitiesLoaded());
       },
     );
@@ -90,6 +115,13 @@ class RegisterCubit extends Cubit<RegisterState> {
           (l) => emit(ProviderRegisterServiceTypeError()),
           (r) {
         serviceTypeList = r.data!;
+        if(userModel!.data!=null){
+          for(int i=0;i<serviceTypeList.length;i++){
+            if(serviceTypeList.elementAt(i).name==userModel!.data!.user.){
+              changeServiceType(serviceTypeList.elementAt(i));
+            }
+          }
+        }
         emit(ProviderRegisterServiceTypeLoaded());
       },
     );
