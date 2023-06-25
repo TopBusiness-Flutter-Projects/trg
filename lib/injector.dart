@@ -10,6 +10,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
 import 'features/NavigationProviderBottom/cubit/navigation_provider_cubit.dart';
+import 'features/contact us/presentation/cubit/contact_us_cubit.dart';
 import 'features/employment/cubit/employment_cubit.dart';
 import 'features/filter_providers/cubit/provider_filter_cubit.dart';
 import 'features/home/cubit/home_cubit.dart';
@@ -57,6 +58,9 @@ Future<void> setup() async {
   );
   serviceLocator.registerFactory(
     () => ProviderSettingCubit(),
+  );
+  serviceLocator.registerFactory(
+    () => ContactUsCubit(serviceLocator()),
   );
 
   ///////////////////////////////////////////////////////////////////////////////

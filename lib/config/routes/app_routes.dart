@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:trj/features/code_verify/screens/code_verify.dart';
+import 'package:trj/features/contact%20us/presentation/screens/contact_us.dart';
 import 'package:trj/features/forgot_password/screens/forgot_password.dart';
 import 'package:trj/features/new_password/screens/new_password.dart';
 import 'package:trj/features/sign_up/screens/sign_up.dart';
@@ -31,7 +32,7 @@ class Routes {
   static const String newPasswordScreenRoute = '/newPasswordScreen';
   static const String monthplanPageScreenRoute = '/monthplanPageScreen';
   static const String onboardingPageScreenRoute = '/onboardingPageScreen';
-  static const String podAdsPageScreenRoute = '/podAdsPageScreen';
+  static const String contactus = '/contact';
   static const String lessonClassScreenRoute = '/lessonClassPageScreen';
   static const String sourceReferencesDetailsRoute = '/sourceReferencesDetails';
   static const String examInstructionsRoute = '/examInstructions';
@@ -78,6 +79,9 @@ class AppRoutes {
         );
       case Routes.forgotPasswordScreenRoute:
         return MaterialPageRoute(builder: (context) => const ForgotPassword(),
+        );
+        case Routes.contactus:
+        return MaterialPageRoute(builder: (context) =>  ContactUsScreen(),
         );
     case Routes.homePageScreenRoute:
       return PageTransition(

@@ -190,8 +190,14 @@ Row(
                ),
              ),
           SizedBox(height: 20,),
-             Text('contact_us'.tr(),
+             InkWell(
+               onTap: () {
+                 Navigator.pushNamed(context, Routes.contactus);
+
+               },
+               child: Text('contact_us'.tr(),
         style: TextStyle(color: AppColors.white,fontSize: 13),),
+             ),
           SizedBox(height: 20,),
         ],
 
@@ -203,41 +209,41 @@ Row(
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                    child: Row(
-                      // mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          ImageAssets.linkedindImage,
-                          width: 40.0,
-                          height: 40.0,
-                          fit: BoxFit.cover,
-                        ),
-                        Image.asset(
-                          ImageAssets.twitterImage,
-                          width: 40.0,
-                          height: 40.0,
-                          fit: BoxFit.cover,
-                        ),
-                        Image.asset(
-                          ImageAssets.instagramImage,
-                          width: 40.0,
-                          height: 40.0,
-                          fit: BoxFit.cover,
-                        ),
-                        Image.asset(
-                          ImageAssets.facebookImage,
-                          width: 40.0,
-                          height: 40.0,
-                          fit: BoxFit.cover,
-                        ),
-
-                      ],
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                  //   child: Row(
+                  //     // mainAxisSize: MainAxisSize.min,
+                  //     mainAxisAlignment: MainAxisAlignment.center,
+                  //     crossAxisAlignment: CrossAxisAlignment.center,
+                  //     children: [
+                  //       Image.asset(
+                  //         ImageAssets.linkedindImage,
+                  //         width: 40.0,
+                  //         height: 40.0,
+                  //         fit: BoxFit.cover,
+                  //       ),
+                  //       Image.asset(
+                  //         ImageAssets.twitterImage,
+                  //         width: 40.0,
+                  //         height: 40.0,
+                  //         fit: BoxFit.cover,
+                  //       ),
+                  //       Image.asset(
+                  //         ImageAssets.instagramImage,
+                  //         width: 40.0,
+                  //         height: 40.0,
+                  //         fit: BoxFit.cover,
+                  //       ),
+                  //       Image.asset(
+                  //         ImageAssets.facebookImage,
+                  //         width: 40.0,
+                  //         height: 40.0,
+                  //         fit: BoxFit.cover,
+                  //       ),
+                  //
+                  //     ],
+                  //   ),
+                  // ),
                   SizedBox(height: 30),
                 ],
               ),

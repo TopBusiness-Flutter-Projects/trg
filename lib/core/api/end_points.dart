@@ -9,6 +9,8 @@ class EndPoints {
   static const String loginUrl = '${baseUrl}provider/auth/login';
   static const String registerUrl = '${baseUrl}provider/auth/register';
   static const String updateUrl = '${baseUrl}provider/auth/update-profile';
+  static const String contactUsUrl = '${baseUrl}client/auth/contact-us';
+
 
 
 

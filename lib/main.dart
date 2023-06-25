@@ -15,6 +15,7 @@ import 'core/utils/app_colors.dart';
 import 'core/utils/restart_app_class.dart';
 // import 'firebase_options.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -60,7 +61,7 @@ Future<void> main() async {
       saveLocale: true,
       startLocale: Locale('ar', ''),
       fallbackLocale: Locale('ar', ''),
-      child: HotRestartController(child: const Elmazoon()),
+      child: Phoenix(child: const Elmazoon()),
     ),
   );
 }

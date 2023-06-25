@@ -5,11 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_share/flutter_share.dart';
 import 'package:in_app_review/in_app_review.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
+
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:restart_app/restart_app.dart';
 import 'package:trj/core/widgets/show_loading_indicator.dart';
 import 'package:trj/features/provider_profile/cubit/provider_data_cubit.dart';
 
+import '../../../config/routes/app_routes.dart';
 import '../../../core/preferences/preferences.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/assets_manager.dart';
@@ -140,8 +143,7 @@ class _ProviderSettingState extends State<ProviderSetting> {
                                            const Locale('ar'));
                                      },
                                    );
-                                   Restart.restartApp();
-                                 },
+                                   Phoenix.rebirth(context);                                 },
                                  child: Row(
                                    children: [
                                      Image.asset(
@@ -224,19 +226,25 @@ class _ProviderSettingState extends State<ProviderSetting> {
                                ),
                                SizedBox(height: 20,),
 
-                               Row(
-                                 children: [
-                                   Image.asset(
-                                     ImageAssets.callImage,
-                                     width: 20.0,
-                                     height: 20.0,
-                                     fit: BoxFit.cover,
-                                     color: AppColors.primary,
-                                   ),
-                                   SizedBox(width: 10,),
-                                   Text('contact_us'.tr(),
-                                     style: TextStyle(color: AppColors.primary,fontSize: 13),)
-                                 ],
+                               InkWell(
+                                 onTap: () {
+
+                                   Navigator.pushNamed(context, Routes.contactus);
+                                 },
+                                 child: Row(
+                                   children: [
+                                     Image.asset(
+                                       ImageAssets.callImage,
+                                       width: 20.0,
+                                       height: 20.0,
+                                       fit: BoxFit.cover,
+                                       color: AppColors.primary,
+                                     ),
+                                     SizedBox(width: 10,),
+                                     Text('contact_us'.tr(),
+                                       style: TextStyle(color: AppColors.primary,fontSize: 13),)
+                                   ],
+                                 ),
                                ),
                                SizedBox(height: 20,),
                                Divider(

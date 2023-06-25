@@ -32,19 +32,19 @@ class NewPasswordScreen extends StatelessWidget {
                   fontWeight: FontWeight.w600),
             ).tr(),
             const SizedBox(height: 58,),
-            CustomTextField(
-                title: translate.tr("enter_new_password"),
-                textInputType: TextInputType.text,
-                prefixWidget: Icon(Icons.lock_outline),
-                borderSide: BorderSide(color: AppColors.primary),
-                backgroundColor: AppColors.white),
-               const SizedBox(height: 25,),
-              CustomTextField(
-                title: translate.tr("confirm_password"),
-                textInputType: TextInputType.text,
-                prefixWidget: Icon(Icons.lock_outline),
-                borderSide: BorderSide(color: AppColors.primary),
-                backgroundColor: AppColors.white),
+            // CustomTextField(
+            //     title: translate.tr("enter_new_password"),
+            //     textInputType: TextInputType.text,
+            //     prefixWidget: Icon(Icons.lock_outline),
+            //     borderSide: BorderSide(color: AppColors.primary),
+            //     backgroundColor: AppColors.white),
+            //    const SizedBox(height: 25,),
+            //   CustomTextField(
+            //     title: translate.tr("confirm_password"),
+            //     textInputType: TextInputType.text,
+            //     prefixWidget: Icon(Icons.lock_outline),
+            //     borderSide: BorderSide(color: AppColors.primary),
+            //     backgroundColor: AppColors.white),
             const SizedBox(height: 72,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18),

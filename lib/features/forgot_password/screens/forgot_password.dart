@@ -40,12 +40,12 @@ class ForgotPassword extends StatelessWidget {
                   fontWeight: FontWeight.w600),
             ).tr(),
             const SizedBox(height: 99,),
-            CustomTextField(
-                title: translate.tr("email"),
-                textInputType: TextInputType.emailAddress,
-                prefixWidget: Icon(Icons.email_outlined),
-                borderSide: BorderSide(color: AppColors.primary),
-                backgroundColor: AppColors.white),
+            // CustomTextField(
+            //     title: translate.tr("email"),
+            //     textInputType: TextInputType.emailAddress,
+            //     prefixWidget: Icon(Icons.email_outlined),
+            //     borderSide: BorderSide(color: AppColors.primary),
+            //     backgroundColor: AppColors.white),
             const SizedBox(height: 72,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18),

@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:trj/core/model/service_type_data_model.dart';
 import 'package:trj/features/login/model/login_model.dart';
+import '../../features/contact us/models/contact_us_model.dart';
 import '../../features/sign_up/model/register_model.dart';
 import '../api/base_api_consumer.dart';
 import '../api/end_points.dart';
@@ -136,6 +137,18 @@ class ServiceApi {
         },
       );
       return Right(UserModel.fromJson(response));
+    } on ServerException {
+      return Left(ServerFailure());
+    }
+  }
+  Future<Either<Failure, ContactUsModel>> contactUsApi(
+      ContactUsData contactUsData) async {
+    try {
+      final response = await dio.post(
+        EndPoints.contactUsUrl,
+        body: contactUsData.toJson(),
+      );
+      return Right(ContactUsModel.fromJson(response));
     } on ServerException {
       return Left(ServerFailure());
     }

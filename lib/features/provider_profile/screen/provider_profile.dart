@@ -275,51 +275,51 @@ class ProviderProfile extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 14, color: AppColors.orangeThirdPrimary),
                 ),
-                Text(
-                  'follow_us'.tr(),
-                  style: TextStyle(
-                      fontSize: 14, color: AppColors.gray8),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                  child: Row(
-                    // mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        ImageAssets.linkedindImage,
-                        width: 40.0,
-                        height: 40.0,
-                        fit: BoxFit.cover,
-                        color: AppColors.primary,
-                      ),
-                      Image.asset(
-                        ImageAssets.twitterImage,
-                        width: 40.0,
-                        height: 40.0,
-                        fit: BoxFit.cover,
-                        color: AppColors.primary,
-                      ),
-                      Image.asset(
-                        ImageAssets.instagramImage,
-                        width: 40.0,
-                        height: 40.0,
-                        fit: BoxFit.cover,
-                        color: AppColors.primary,
-                      ),
-
-                      Image.asset(
-                        ImageAssets.facebookImage,
-                        width: 40.0,
-                        height: 40.0,
-                        fit: BoxFit.cover,
-                        color: AppColors.primary,
-                      ),
-
-                    ],
-                  ),
-                ),
+                // Text(
+                //   'follow_us'.tr(),
+                //   style: TextStyle(
+                //       fontSize: 14, color: AppColors.gray8),
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                //   child: Row(
+                //     // mainAxisSize: MainAxisSize.min,
+                //     mainAxisAlignment: MainAxisAlignment.center,
+                //     crossAxisAlignment: CrossAxisAlignment.center,
+                //     children: [
+                //       Image.asset(
+                //         ImageAssets.linkedindImage,
+                //         width: 40.0,
+                //         height: 40.0,
+                //         fit: BoxFit.cover,
+                //         color: AppColors.primary,
+                //       ),
+                //       Image.asset(
+                //         ImageAssets.twitterImage,
+                //         width: 40.0,
+                //         height: 40.0,
+                //         fit: BoxFit.cover,
+                //         color: AppColors.primary,
+                //       ),
+                //       Image.asset(
+                //         ImageAssets.instagramImage,
+                //         width: 40.0,
+                //         height: 40.0,
+                //         fit: BoxFit.cover,
+                //         color: AppColors.primary,
+                //       ),
+                //
+                //       Image.asset(
+                //         ImageAssets.facebookImage,
+                //         width: 40.0,
+                //         height: 40.0,
+                //         fit: BoxFit.cover,
+                //         color: AppColors.primary,
+                //       ),
+                //
+                //     ],
+                //   ),
+                // ),
                 SizedBox(height: 30,)
               ],
             ),

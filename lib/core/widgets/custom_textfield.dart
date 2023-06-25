@@ -3,81 +3,102 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../utils/app_colors.dart';
+import '../utils/convert_numbers_method.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     Key? key,
-     this.suffixWidget,
+    required this.image,
     required this.title,
     required this.textInputType,
     this.minLine = 1,
+    this.horizontalPadding = 30,
     this.isPassword = false,
+    this.isBorder = false,
     this.validatorMessage = '',
     this.controller,
-    this.prefix,
     this.imageColor = Colors.grey,
-    this.borderSide=BorderSide.none,
     required this.backgroundColor,
-    this.isEnable = true, this.onchange,
-    this.prefixWidget
+    this.isEnable = true,
   }) : super(key: key);
-  final Widget? suffixWidget;
-  final Widget? prefixWidget;
-  final Widget? prefix;
+  final String image;
   final Color imageColor;
   final Color backgroundColor;
   final String title;
   final String validatorMessage;
   final int minLine;
+  final double? horizontalPadding;
+
   final bool isPassword;
   final bool? isEnable;
-  final Function(String)? onchange;
+  final bool? isBorder;
   final TextInputType textInputType;
   final TextEditingController? controller;
-  final BorderSide borderSide;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 20),
-      child: TextFormField(
-        controller: controller,
-        keyboardType: textInputType,
-        obscureText: isPassword,
-        enabled: isEnable,
-        decoration: InputDecoration(
-         // contentPadding: EdgeInsets.only(right: 10),
-          contentPadding: EdgeInsets.fromLTRB(20.0, 20.0, 30.0, 20.0),
-          hintStyle: TextStyle(
-            color: AppColors.gray,
-            fontWeight: FontWeight.bold,
-          ),
-          hintText: title,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16.0),
-            borderSide: borderSide,
-          ),
-          suffixIcon: suffixWidget,
-          prefixIcon:prefixWidget ,
+      padding:
+          EdgeInsets.symmetric(vertical: 4, horizontal: horizontalPadding!),
+      child: Container(
+        decoration: isBorder!
+            ? BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(width: 1, color: AppColors.gray),
+              )
+            : null,
+        child: TextFormField(
+          controller: controller,
+          keyboardType: textInputType,
+          obscureText: isPassword,
+          enabled: isEnable,
+          style: TextStyle(color: AppColors.black),
+          textAlign: TextAlign.start,
 
-          prefixIconConstraints: BoxConstraints(
-            minHeight: 0,
-            minWidth: 0,
+          textAlignVertical: TextAlignVertical.top,
+          decoration: InputDecoration(
+            labelStyle: TextStyle(
+              fontSize: 22,
+            ),
 
+            prefixIcon: image != 'null'
+                ? Padding(
+                    padding: EdgeInsets.only(
+                      right: 12,
+                      left: 12,
+                    ),
+                    child: SvgPicture.asset(
+
+                      image,
+                      color: imageColor,
+                      height: 26,
+                      width: 26,
+                    ),
+                  )
+                : null,
+            prefixIconConstraints: const BoxConstraints(
+              minHeight: 32,
+              minWidth: 32,
+              maxHeight: 50,
+              maxWidth: 50,
+            ),
+            hintText: title,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide.none,
+            ),
+            fillColor: backgroundColor,
+            filled: true,
           ),
-          prefix: prefix,
-          fillColor: backgroundColor,
-          filled: true,
+          maxLines: isPassword ? 1 : 20,
+          minLines: minLine,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return validatorMessage;
+            }
+            return null;
+          },
         ),
-        onChanged: onchange,
-        maxLines: isPassword ? 1 : 20,
-        minLines: minLine,
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return validatorMessage;
-          }
-          return null;
-        },
       ),
     );
   }
@@ -111,7 +132,7 @@ class ThousandsSeparatorInputFormatter extends TextInputFormatter {
 
       String newString = '';
       for (int i = chars.length - 1; i >= 0; i--) {
-        if ((chars.length - 1 - i) % 4 == 0 && i != chars.length - 1)
+        if ((chars.length - 1 - i) % 3 == 0 && i != chars.length - 1)
           newString = separator + newString;
         newString = chars[i] + newString;
       }
@@ -126,36 +147,5 @@ class ThousandsSeparatorInputFormatter extends TextInputFormatter {
 
     // If the new value and old value are the same, just return as-is
     return newValue;
-  }
-}
-
-class CardNumberFormatter extends TextInputFormatter {
-  @override
-  TextEditingValue formatEditUpdate(
-      TextEditingValue previousValue,
-      TextEditingValue nextValue,
-      ) {
-    var inputText = nextValue.text;
-
-    if (nextValue.selection.baseOffset == 0) {
-      return nextValue;
-    }
-
-    var bufferString = StringBuffer();
-    for (int i = 0; i < inputText.length; i++) {
-      bufferString.write(inputText[i]);
-      var nonZeroIndexValue = i + 1;
-      if (nonZeroIndexValue % 4 == 0 && nonZeroIndexValue != inputText.length) {
-        bufferString.write(' ');
-      }
-    }
-
-    var string = bufferString.toString();
-    return nextValue.copyWith(
-      text: string,
-      selection: TextSelection.collapsed(
-        offset: string.length,
-      ),
-    );
   }
 }
