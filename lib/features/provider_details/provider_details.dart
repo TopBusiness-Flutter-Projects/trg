@@ -50,214 +50,218 @@ class _ProviderDetailsState extends State<ProviderDetails> {
                           top:0,
                           right: 0,
                           left: 0,
-                          child: SingleChildScrollView(
-                            child: Center(
-                              child: Column(
-                 crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  SizedBox(height: 50,),
-                                  Text(
+                           bottom:50,
+                          child: Center(
+                            child: ListView(
+                shrinkWrap: true,
+                              children: [
+                                SizedBox(height: 50,),
+                                Center(
+                                  child: Text(
                                     widget.providerModel.name,
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                         fontSize: 14, color: AppColors.black),
                                   ),
-                                  Row(
-                                    children: [
-                                      SizedBox(
-                                        width: 30,
-                                      ),
-                                      Text(
-                                        "city".tr()+":",
-                                        style: TextStyle(
-                                            fontSize: 14, color: AppColors.black),
-                                      ),
-                                      SizedBox(
-                                        width: 30,
-                                      ),
-                                      Text(
-                                      widget.providerModel.city??'',
-                                        style: TextStyle(
-                                            fontSize: 14, color: AppColors.black),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Row(
-                                    children: [
-                                      SizedBox(
-                                        width: 30,
-                                      ),
-                                      Text(
-                                        "address".tr()+":",
-                                        style: TextStyle(
-                                            fontSize: 14, color: AppColors.black),
-                                      ),
-                                      SizedBox(
-                                        width: 30,
-                                      ),
-                                      Text(
-                                        widget.providerModel.address,
-                                        style: TextStyle(
-                                            fontSize: 14, color: AppColors.black),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Row(
-                                    children: [
-                                      SizedBox(
-                                        width: 30,
-                                      ),
-                                      Text(
-                                        "provider".tr()+":",
-                                        style: TextStyle(
-                                            fontSize: 14, color: AppColors.black),
-                                      ),
-                                      SizedBox(
-                                        width: 30,
-                                      ),
-                                      Text(
-                                        widget.providerModel.providerType==1?'office':"individual",
-                                        style: TextStyle(
-                                            fontSize: 14, color: AppColors.black),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Row(
-                                    children: [
-                                      SizedBox(
-                                        width: 30,
-                                      ),
-                                      Text(
-                                        "experience".tr()+":",
-                                        style: TextStyle(
-                                            fontSize: 14, color: AppColors.black),
-                                      ),
-                                      SizedBox(
-                                        width: 30,
-                                      ),
-                                      Text(
-                                        widget.providerModel.experience,
-                                        style: TextStyle(
-                                            fontSize: 14, color: AppColors.black),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Row(
-                                    children: [
-                                      SizedBox(
-                                        width: 30,
-                                      ),
-                                      Text(
-                                        "phone".tr()+":",
-                                        style: TextStyle(
-                                            fontSize: 14, color: AppColors.black),
-                                      ),
-                                      SizedBox(
-                                        width: 30,
-                                      ),
-                                      Text(
-                                        widget.providerModel.phone,
-                                        style: TextStyle(
-                                            fontSize: 14, color: AppColors.black),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Row(
-                                    children: [
-                                      SizedBox(
-                                        width: 30,
-                                      ),
-                                      Text(
-                                        "email".tr()+":",
-                                        style: TextStyle(
-                                            fontSize: 14, color: AppColors.black),
-                                      ),
-                                      SizedBox(
-                                        width: 30,
-                                      ),
-                                      Text(
-                                        widget.providerModel.email,
-                                        style: TextStyle(
-                                            fontSize: 14, color: AppColors.black),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Row(
-                                    children: [
-                                      SizedBox(
-                                        width: 30,
-                                      ),
-                                      Text(
-                                        "previous_work".tr()+":",
-                                        style: TextStyle(
-                                            fontSize: 14, color: AppColors.black),
-                                      ),
-                                      SizedBox(
-                                        width: 30,
-                                      ),
+                                ),
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 30,
+                                    ),
+                                    Text(
+                                      "city".tr()+":",
+                                      style: TextStyle(
+                                          fontSize: 14, color: AppColors.black),
+                                    ),
+                                    SizedBox(
+                                      width: 30,
+                                    ),
+                                    Text(
+                                    widget.providerModel.city??'',
+                                      style: TextStyle(
+                                          fontSize: 14, color: AppColors.black),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 30,
+                                    ),
+                                    Text(
+                                      "address".tr()+":",
+                                      style: TextStyle(
+                                          fontSize: 14, color: AppColors.black),
+                                    ),
+                                    SizedBox(
+                                      width: 30,
+                                    ),
+                                    Text(
+                                      widget.providerModel.address,
+                                      style: TextStyle(
+                                          fontSize: 14, color: AppColors.black),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 30,
+                                    ),
+                                    Text(
+                                      "provider".tr()+":",
+                                      style: TextStyle(
+                                          fontSize: 14, color: AppColors.black),
+                                    ),
+                                    SizedBox(
+                                      width: 30,
+                                    ),
+                                    Text(
+                                      widget.providerModel.providerType==1?'office':"individual",
+                                      style: TextStyle(
+                                          fontSize: 14, color: AppColors.black),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 30,
+                                    ),
+                                    Text(
+                                      "experience".tr()+":",
+                                      style: TextStyle(
+                                          fontSize: 14, color: AppColors.black),
+                                    ),
+                                    SizedBox(
+                                      width: 30,
+                                    ),
+                                    Text(
+                                      widget.providerModel.experience,
+                                      style: TextStyle(
+                                          fontSize: 14, color: AppColors.black),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 30,
+                                    ),
+                                    Text(
+                                      "phone".tr()+":",
+                                      style: TextStyle(
+                                          fontSize: 14, color: AppColors.black),
+                                    ),
+                                    SizedBox(
+                                      width: 30,
+                                    ),
+                                    Text(
+                                      widget.providerModel.phone,
+                                      style: TextStyle(
+                                          fontSize: 14, color: AppColors.black),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 30,
+                                    ),
+                                    Text(
+                                      "email".tr()+":",
+                                      style: TextStyle(
+                                          fontSize: 14, color: AppColors.black),
+                                    ),
+                                    SizedBox(
+                                      width: 30,
+                                    ),
+                                    Text(
+                                      widget.providerModel.email,
+                                      style: TextStyle(
+                                          fontSize: 14, color: AppColors.black),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 30,
+                                    ),
+                                    Text(
+                                      "previous_work".tr()+":",
+                                      style: TextStyle(
+                                          fontSize: 14, color: AppColors.black),
+                                    ),
+                                    SizedBox(
+                                      width: 30,
+                                    ),
 
-                                    ],
-                                  ),
-                                  Text(
+                                  ],
+                                ),
+                                Center(
+                                  child: Text(
                                     widget.providerModel.previousExperience,
                                     style: TextStyle(
                                         fontSize: 14, color: AppColors.black),
                                   ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Row(
-                                    children: [
-                                      SizedBox(
-                                        width: 30,
-                                      ),
-                                      Text(
-                                        "whats_app".tr()+":",
-                                        style: TextStyle(
-                                            fontSize: 14, color: AppColors.black),
-                                      ),
-                                      SizedBox(
-                                        width: 30,
-                                      ),
-                                      Text(
-                                        widget.providerModel.watts,
-                                        style: TextStyle(
-                                            fontSize: 14, color: AppColors.black),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 30,
+                                    ),
+                                    Text(
+                                      "whats_app".tr()+":",
+                                      style: TextStyle(
+                                          fontSize: 14, color: AppColors.black),
+                                    ),
+                                    SizedBox(
+                                      width: 30,
+                                    ),
+                                    Text(
+                                      widget.providerModel.watts,
+                                      style: TextStyle(
+                                          fontSize: 14, color: AppColors.black),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Center(
+                                  child: Text(
                                     widget.providerModel.aboutMe,
                                     style: TextStyle(
                                         fontSize: 14, color: AppColors.orangeThirdPrimary),
                                   ),
-                                  SizedBox(
-                                    height: 30,
-                                  ),
-                                ],
-                              ),
+                                ),
+                                SizedBox(
+                                  height: 30,
+                                ),
+                              ],
                             ),
                           ),
                         ),

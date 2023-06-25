@@ -31,7 +31,7 @@ class ProviderModel {
     id: json["id"],
     name: json["name"],
     phone: json["phone"],
-    email: json["email"],
+    email: json["email"]??'',
     image: json["image"],
     watts: json["watts"],
     experience: json["experience"],
