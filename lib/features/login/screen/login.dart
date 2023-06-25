@@ -148,11 +148,11 @@ class Login extends StatelessWidget {
                        Navigator.pushNamed(context, Routes.signUpScreenRoute);
                      },
                       child: Text("new_login",style: TextStyle(color: AppColors.orangeThirdPrimary),).tr()),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, Routes.forgotPasswordScreenRoute);
-                      },
-                        child: Text("forgot_password",style: TextStyle(color: AppColors.orangeThirdPrimary)).tr()),
+                    // InkWell(
+                    //   onTap: () {
+                    //     Navigator.pushNamed(context, Routes.forgotPasswordScreenRoute);
+                    //   },
+                    //     child: Text("forgot_password",style: TextStyle(color: AppColors.orangeThirdPrimary)).tr()),
 
                 ],),
 

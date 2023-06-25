@@ -12,6 +12,7 @@ import '../../../core/widgets/my_svg_widget.dart';
 import '../../employment/presentation/screens/employment.dart';
 import '../../home/presentation/screens/home.dart';
 import '../../provider_profile/screen/provider_profile.dart';
+import '../../provider_setting/screen/provider_setting.dart';
 import '../cubit/navigation_provider_cubit.dart';
 
 class ZoomPrpvider extends StatefulWidget {
@@ -116,7 +117,7 @@ class _ZoomPrpviderState extends State<ZoomPrpvider> {
     if (_page == 0) {
       return ProviderProfile();
     } else {
-      return Employment();
+      return ProviderSetting();
     }
   }
 }

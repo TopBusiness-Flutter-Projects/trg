@@ -68,7 +68,11 @@ class User {
   int status;
   String image;
   int userType;
-
+  dynamic aboutMe;
+  dynamic previousExperience;
+  dynamic watts;
+  dynamic experience;
+  dynamic city;
   User({
     required this.id,
     required this.name,
@@ -78,6 +82,11 @@ class User {
     required this.status,
     required this.image,
     required this.userType,
+    this.aboutMe,
+    this.previousExperience,
+    this.city,
+    this.watts,
+    this.experience,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => User(
@@ -89,6 +98,11 @@ class User {
     status: json["status"],
     image: json["image"],
     userType: json["user_type"],
+    watts: json["watts"],
+    experience: json["experience"],
+    aboutMe: json["about_me"]??'',
+    previousExperience: json["previous_experience"],
+    city: json["city"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -100,6 +114,11 @@ class User {
     "status": status,
     "image": image,
     "user_type": userType,
+    "about_me": aboutMe,
+    "previous_experience": previousExperience,
+    "city": city,
+    "watts": watts,
+    "experience": experience,
   };
 }
 

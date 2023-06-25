@@ -105,7 +105,7 @@ class ProviderProfile extends StatelessWidget {
                       width: 30,
                     ),
                     Text(
-                      cubit.userModel!.data!.user.name,
+                      cubit.userModel!.data!.user.city,
                       style: TextStyle(fontSize: 14, color: AppColors.black),
                     ),
                   ],
@@ -170,7 +170,7 @@ class ProviderProfile extends StatelessWidget {
                       width: 30,
                     ),
                     Text(
-                      cubit.userModel!.data!.user.name,
+                      cubit.userModel!.data!.user.experience,
                       style: TextStyle(fontSize: 14, color: AppColors.black),
                     ),
                   ],
@@ -233,7 +233,7 @@ class ProviderProfile extends StatelessWidget {
                       width: 30,
                     ),
                     Text(
-                      cubit.userModel!.data!.user.name,
+                      cubit.userModel!.data!.user.previousExperience,
                       style: TextStyle(fontSize: 14, color: AppColors.black),
                     ),
                   ],
@@ -254,7 +254,7 @@ class ProviderProfile extends StatelessWidget {
                       width: 30,
                     ),
                     Text(
-                      cubit.userModel!.data!.user.phone,
+                      cubit.userModel!.data!.user.watts,
                       style: TextStyle(fontSize: 14, color: AppColors.black),
                     ),
                   ],
@@ -263,7 +263,7 @@ class ProviderProfile extends StatelessWidget {
                   height: 20,
                 ),
                 Text(
-                  cubit.userModel!.data!.user.address,
+                  cubit.userModel!.data!.user.aboutMe,
                   style: TextStyle(
                       fontSize: 14, color: AppColors.orangeThirdPrimary),
                 ),

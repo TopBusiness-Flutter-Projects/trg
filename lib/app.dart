@@ -8,6 +8,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:quick_actions/quick_actions.dart';
 import 'package:trj/features/login/cubit/login_cubit.dart';
+import 'package:trj/features/provider_setting/cubit/provider_setting_cubit.dart';
 import 'package:trj/features/sign_up/cubit/register_cubit.dart';
 // import 'package:screenshot_callback/screenshot_callback.dart';
 
@@ -173,6 +174,9 @@ class _ElmazoonState extends State<Elmazoon> {
         ),
         BlocProvider(
           create: (_) => injector.serviceLocator<ProviderDataCubit>(),
+        ),
+        BlocProvider(
+          create: (_) => injector.serviceLocator<ProviderSettingCubit>(),
         ),
 
       //   BlocProvider(

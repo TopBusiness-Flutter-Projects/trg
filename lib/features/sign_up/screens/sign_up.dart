@@ -265,6 +265,41 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(
                     height: 26,
                   ),
+                  Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                child: TextFormField(
+                  maxLines: 1,
+                  autofocus: false,
+                  cursorColor: AppColors.primary,
+                  keyboardType: TextInputType.text,
+                  textInputAction: TextInputAction.next,
+                  onChanged: (data) {
+                    formKey.currentState!.validate();
+                    cubit.registerModel.address = data;
+                    cubit.checkValidLoginData();
+                  },
+                 // controller: cubit.emailControl,
+                  validator: (value) {
+                    print(value);
+                    if (value == null || value.isEmpty) {
+                      return 'field_reguired'.tr();
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16.0),
+                        borderSide: BorderSide(color: AppColors.primary),
+                      ),
+                      prefixIcon: Image.asset(ImageAssets.yearsExperienceIcon),
+                      hintText: 'address'.tr(),
+                      hintStyle: TextStyle(
+                          color: AppColors.gray1, fontSize: 14.0)),
+                ),
+              ),
+                  const SizedBox(
+                    height: 26,
+                  ),
 
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -298,6 +333,45 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             child: ImageIcon(AssetImage(ImageAssets.experienceIcon)),
                           ),
                           hintText: 'prev_experience'.tr(),
+                          hintStyle: TextStyle(
+                              color: AppColors.gray1, fontSize: 14.0)),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                    child: TextFormField(
+                      maxLines: 6,
+                      autofocus: false,
+                      minLines: 4,
+                      cursorColor: AppColors.primary,
+                      keyboardType: TextInputType.text,
+                      textInputAction: TextInputAction.next,
+                      onChanged: (data) {
+                        formKey.currentState!.validate();
+                        cubit.registerModel.aboutMe = data;
+                        cubit.checkValidLoginData();
+                      },
+                      validator: (value) {
+                        print(value);
+                        if (value == null || value.isEmpty) {
+                          return 'field_reguired'.tr();
+                        }
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16.0),
+                            borderSide: BorderSide(color: AppColors.primary),
+                          ),
+                          prefixIcon:
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 55.0),
+                            child: ImageIcon(AssetImage(ImageAssets.experienceIcon)),
+                          ),
+                          hintText: 'aboutMe'.tr(),
                           hintStyle: TextStyle(
                               color: AppColors.gray1, fontSize: 14.0)),
                     ),

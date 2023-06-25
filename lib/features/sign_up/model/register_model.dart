@@ -10,6 +10,7 @@ class RegisterModel {
   String phone = '';
   String previousExperience = '';
   String aboutMe = '';
+  String address = '';
   String experienceYears = '';
   int providerType = 0;
   int individualType = 0;
@@ -28,6 +29,7 @@ class RegisterModel {
         previousExperience.isNotEmpty &&
         aboutMe.isNotEmpty &&
         experienceYears.isNotEmpty &&
+        address.isNotEmpty&&
         providerType != 0 &&
         ((providerType == 1 &&
                 commericial_photo_path.isNotEmpty &&
@@ -49,8 +51,8 @@ class RegisterModel {
         "provider_type": providerType,
         "city_id": city_id,
         "translation_type_id": service_id,
-        "address": "add",
-        "about_me": "about",
+        "address":address,
+        "about_me": aboutMe,
         "experience": experienceYears,
         "previous_experience": previousExperience,
         "person_type": individualType,

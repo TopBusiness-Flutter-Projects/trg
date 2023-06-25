@@ -16,6 +16,7 @@ import 'features/home/cubit/home_cubit.dart';
 import 'features/navigation_bottom/cubit/navigation_cubit.dart';
 import 'features/onboarding/cubit/on_boarding_cubit.dart';
 import 'features/provider_profile/cubit/provider_data_cubit.dart';
+import 'features/provider_setting/cubit/provider_setting_cubit.dart';
 import 'features/search/cubit/provider_filter_cubit.dart';
 
 final serviceLocator = GetIt.instance;
@@ -53,6 +54,9 @@ Future<void> setup() async {
   );
   serviceLocator.registerFactory(
     () => ProviderDataCubit(),
+  );
+  serviceLocator.registerFactory(
+    () => ProviderSettingCubit(),
   );
 
   ///////////////////////////////////////////////////////////////////////////////
