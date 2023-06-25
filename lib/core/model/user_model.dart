@@ -68,8 +68,8 @@ class User {
   int status;
   String image;
   int userType;
-  int provider_type;
-  int translation_type_id;
+  dynamic provider_type;
+  dynamic translation_type_id;
   dynamic aboutMe;
   dynamic previousExperience;
   dynamic watts;
@@ -97,8 +97,8 @@ class User {
     id: json["id"],
     name: json["name"],
     phone: json["phone"],
-    email: json["email"],
-    address: json["address"],
+    email: json["email"]??'',
+    address: json["address"]??'',
     status: json["status"],
     image: json["image"],
     userType: json["user_type"],
@@ -108,7 +108,7 @@ class User {
     aboutMe: json["about_me"]??'',
     previousExperience: json["previous_experience"],
     city: json["city"],
-    provider_type: json["provider_type"],
+    provider_type: json["provider_type"]??0,
   );
 
   Map<String, dynamic> toJson() => {

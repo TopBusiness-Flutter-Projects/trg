@@ -109,6 +109,23 @@ class ServiceApi {
       return Left(ServerFailure());
     }
   }
+  Future<Either<Failure, UserModel>> UpdateUser(RegisterModel userData) async {
+    try {
+      UserModel loginModel = await Preferences.instance.getUserModel();
+
+      final response = await dio.post(
+        options: Options(
+          headers: {'Authorization': loginModel.data!.accessToken!},
+        ),
+        EndPoints.updateUrl,
+        formDataIsEnabled: true,
+        body: await userData.updateuserToJson(),
+      );
+      return Right(UserModel.fromJson(response));
+    } on ServerException {
+      return Left(ServerFailure());
+    }
+  }
   Future<Either<Failure, UserModel>> postLogin(LoginModel model) async {
     try {
       final response = await dio.post(

@@ -54,7 +54,9 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   Future<void> getUserData() async {
     userModel = await Preferences.instance.getUserModel();
+    print(userModel!.toJson());
     if (userModel!.data != null) {
+      passwordControl.text='';
       emailControl.text = userModel!.data!.user.email;
       nameControl.text = userModel!.data!.user.name;
       phoneControl.text = userModel!.data!.user.phone;
@@ -63,7 +65,22 @@ class RegisterCubit extends Cubit<RegisterState> {
       aboutmeControl.text = userModel!.data!.user.aboutMe;
       addressControl.text = userModel!.data!.user.address;
 
+      registerModel.name=userModel!.data!.user.name;
+      registerModel.user_id = userModel!.data!.user.id;
+      registerModel.city_id = userModel!.data!.user.city;
+      registerModel.providerType = userModel!.data!.user.provider_type;
+      registerModel.experienceYears = userModel!.data!.user.experience;
+      registerModel.individualType = userModel!.data!.user.userType;
+      registerModel.phone = userModel!.data!.user.phone;
+      registerModel.address = userModel!.data!.user.address;
+      registerModel.email = userModel!.data!.user.email;
+      registerModel.aboutMe = userModel!.data!.user.aboutMe;
+      registerModel.service_id = userModel!.data!.user.translation_type_id;
+
+
     }
+    getCities();
+    getServiceType();
     emit(OnRegisterData());
   }
 
@@ -100,6 +117,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     response.fold(
       (l) => emit(ProviderRegisterCitiesError()),
       (r) {
+        cities.clear();
         cities = r.data!;
         if (userModel!.data != null) {
           for (int i = 0; i < cities.length; i++) {
@@ -119,6 +137,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     response.fold(
       (l) => emit(ProviderRegisterServiceTypeError()),
       (r) {
+        serviceTypeList.clear();
         serviceTypeList = r.data!;
         if (userModel!.data != null) {
           for (int i = 0; i < serviceTypeList.length; i++) {
@@ -135,11 +154,16 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   void changeCity(CitiesModel? value) {
     selectedCity = value;
+    registerModel.city_id=value!.id;
+
+
     emit(ProviderRegisterCitiesLoaded());
   }
 
   void changeServiceType(ServicesTypeModel? value) {
     selectedServiceType = value;
+    registerModel.service_id=value!.id;
+
     emit(ProviderRegisterServiceTypeLoaded());
   }
 
@@ -164,6 +188,10 @@ class RegisterCubit extends Cubit<RegisterState> {
     isHidden = !isHidden;
     emit(RegisterInitial());
   }
+  // void changeUpdateHidden() {
+  //   isRegister = !isRegister;
+  //   emit(UpdateHiddenState());
+  // }
 
   void changeProviderType(ServiceProvider? value) {
     //selectedProviderType=value;
@@ -177,6 +205,33 @@ class RegisterCubit extends Cubit<RegisterState> {
     response.fold(
       (failure) => {Navigator.pop(context), emit(RegisterFailure())},
       (loginModel) {
+        if (loginModel.code == 409) {
+          Navigator.pop(context);
+          toastMessage("exists_email".tr(), context);
+          // errorGetBar(translateText(AppStrings.noEmailError, context));
+          emit(RegisterFailure());
+        } else if (loginModel.code == 200) {
+          Navigator.pop(context);
+          Preferences.instance.setUser(loginModel).then((value) {
+            Navigator.pushNamedAndRemoveUntil(
+                context, Routes.providerhomePageScreenRoute, (route) => false);
+            // emit(OnLoginSuccess(response));
+          });
+        }
+      },
+    );
+  }
+  void update(BuildContext context) async {
+    print("*********************************************");
+    print(registerModel.phone);
+    registerModel.phone=phoneControl.text;
+    print(registerModel.phone);
+
+    AppWidget.createProgressDialog(context, 'wait'.tr());
+    final response = await api.UpdateUser(registerModel);
+    response.fold(
+          (failure) => {Navigator.pop(context), emit(RegisterFailure())},
+          (loginModel) {
         if (loginModel.code == 409) {
           Navigator.pop(context);
           toastMessage("exists_email".tr(), context);

@@ -8,6 +8,7 @@ class EndPoints {
   static const String serviceTypeListUrl = '${baseUrl}translation_types';
   static const String loginUrl = '${baseUrl}provider/auth/login';
   static const String registerUrl = '${baseUrl}provider/auth/register';
+  static const String updateUrl = '${baseUrl}provider/auth/update-profile';
 
 
 

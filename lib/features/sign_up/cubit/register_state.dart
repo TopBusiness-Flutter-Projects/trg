@@ -4,6 +4,7 @@ part of 'register_cubit.dart';
 abstract class RegisterState {}
 
 class RegisterInitial extends RegisterState {}
+class UpdateHiddenState extends RegisterState {}
 class ProviderRegisterCitiesLoading extends RegisterState {}
 class ProviderRegisterCitiesLoaded extends RegisterState {}
 class ProviderRegisterCitiesError extends RegisterState {}

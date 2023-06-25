@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trj/config/routes/app_routes.dart';
 import 'package:trj/core/widgets/show_loading_indicator.dart';
 import 'package:trj/features/provider_profile/cubit/provider_data_cubit.dart';
+import 'package:trj/features/sign_up/cubit/register_cubit.dart';
 
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/assets_manager.dart';
@@ -64,6 +65,7 @@ class ProviderProfile extends StatelessWidget {
                                       children: [
                                         InkWell(
                                           onTap: () {
+                                            context.read<RegisterCubit>().getUserData();
                                             Navigator.pushNamed(context, Routes.signUpScreenRoute);
                                           },
                                             child: Icon(Icons.edit)),
@@ -111,7 +113,7 @@ class ProviderProfile extends StatelessWidget {
                       width: 30,
                     ),
                     Text(
-                      cubit.userModel!.data!.user.city,
+                      cubit.userModel!.data!.user.city??'',
                       style: TextStyle(fontSize: 14, color: AppColors.black),
                     ),
                   ],
