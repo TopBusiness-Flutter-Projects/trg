@@ -68,7 +68,9 @@ class ProviderProfile extends StatelessWidget {
                                             context.read<RegisterCubit>().getUserData();
                                             Navigator.pushNamed(context, Routes.signUpScreenRoute);
                                           },
-                                            child: Icon(Icons.edit)),
+                                            child: Align(
+                                              alignment: Alignment.topLeft,
+                                                child: Icon(Icons.edit))),
                                         Container(
                                           width: 100,
                                           height: 100,
@@ -178,7 +180,7 @@ class ProviderProfile extends StatelessWidget {
                       width: 30,
                     ),
                     Text(
-                      cubit.userModel!.data!.user.experience,
+                      cubit.userModel!.data!.user.experience??"",
                       style: TextStyle(fontSize: 14, color: AppColors.black),
                     ),
                   ],
@@ -241,7 +243,7 @@ class ProviderProfile extends StatelessWidget {
                       width: 30,
                     ),
                     Text(
-                      cubit.userModel!.data!.user.previousExperience,
+                      cubit.userModel!.data!.user.previousExperience??"",
                       style: TextStyle(fontSize: 14, color: AppColors.black),
                     ),
                   ],

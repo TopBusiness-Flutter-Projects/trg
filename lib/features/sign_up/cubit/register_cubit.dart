@@ -65,17 +65,18 @@ class RegisterCubit extends Cubit<RegisterState> {
       aboutmeControl.text = userModel!.data!.user.aboutMe;
       addressControl.text = userModel!.data!.user.address;
 
-      registerModel.name=userModel!.data!.user.name;
+      registerModel.name=nameControl.text;
       registerModel.user_id = userModel!.data!.user.id;
       registerModel.city_id = userModel!.data!.user.city;
       registerModel.providerType = userModel!.data!.user.provider_type;
-      registerModel.experienceYears = userModel!.data!.user.experience;
+      registerModel.experienceYears = experienceControl.text;
       registerModel.individualType = userModel!.data!.user.userType;
-      registerModel.phone = userModel!.data!.user.phone;
-      registerModel.address = userModel!.data!.user.address;
-      registerModel.email = userModel!.data!.user.email;
-      registerModel.aboutMe = userModel!.data!.user.aboutMe;
+      registerModel.phone = phoneControl.text;
+      registerModel.address = addressControl.text;
+      registerModel.email = emailControl.text;
+      registerModel.aboutMe = aboutmeControl.text;
       registerModel.service_id = userModel!.data!.user.translation_type_id;
+      registerModel.previousExperience = previousexperienceControl.text;
 
 
     }

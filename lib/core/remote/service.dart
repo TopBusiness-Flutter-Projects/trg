@@ -10,6 +10,7 @@ import '../error/exceptions.dart';
 import '../error/failures.dart';
 
 import '../model/cities_data_model.dart';
+import '../model/delete_model.dart';
 import '../model/provider_data_model.dart';
 import '../model/slider_data_model.dart';
 import '../model/user_model.dart';
@@ -152,5 +153,21 @@ class ServiceApi {
     } on ServerException {
       return Left(ServerFailure());
     }
+  }
+
+  Future<Either<Failure, DeleteModel>> deleteAccount() async {
+    try{
+      UserModel loginModel = await Preferences.instance.getUserModel();
+      final response = await dio.post(
+        EndPoints.deleteUrl,
+        options: Options(
+          headers: {'Authorization': loginModel.data!.accessToken!},
+        ),
+      );
+      return Right(DeleteModel.fromJson(response));
+    }on ServerException {
+      return Left(ServerFailure());
+    }
+
   }
 }

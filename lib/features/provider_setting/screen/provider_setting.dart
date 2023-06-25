@@ -42,6 +42,9 @@ class _ProviderSettingState extends State<ProviderSetting> {
 
     return BlocBuilder<ProviderSettingCubit, ProviderSettingState>(
       builder: (context, state) {
+        // if(state is DeleteUserSuccessfully){
+        //   Navigator.pushNamed(context, Routes.chooseTypeRoute);
+        // }
         if(state is ProviderUserSetting){
         return SingleChildScrollView(
           child: Center(
@@ -252,6 +255,155 @@ class _ProviderSettingState extends State<ProviderSetting> {
                                  color: AppColors.unselectedTab,
                                ),
                                SizedBox(height: 20,),
+                               //TODO-->LOG OUT
+                               InkWell(
+                                 onTap: () {
+                                   // Preferences.instance.clearUserData();
+                                   // Navigator.pushNamed(context, Routes.chooseTypeRoute);
+                                   showDialog(
+                                     context: context,
+                                     builder: (BuildContext context) {
+                                       return Container(
+                                         decoration: BoxDecoration(
+                                             borderRadius: BorderRadius.circular(10),
+                                             border: Border.all(color: Colors.orange,width: 2)
+                                         ),
+                                         child: AlertDialog(
+                                           // title: Text('Dialog Title'),
+                                           content: Text('wanna_logout'.tr(),
+                                             textAlign: TextAlign.center,
+                                             style: TextStyle(color: Colors.orange),
+                                           ),
+                                           actions: <Widget>[
+
+                                             SizedBox(
+                                               width:125,
+                                               child: ElevatedButton(
+                                                 child: Text('cancel'.tr()),
+                                                 onPressed: () {
+                                                   Navigator.of(context).pop();
+                                                 },
+                                                 style: ElevatedButton.styleFrom(
+                                                     backgroundColor: Colors.red
+                                                 ),
+                                               ),
+                                             ),
+
+
+                                             SizedBox(
+                                               width:125,
+                                               child: ElevatedButton(
+                                                 child: Text('ok'.tr()),
+                                                 onPressed: () async {
+                                                   // Do something when the user presses the OK button
+                                                   Preferences.instance.clearUserData();
+                                                    Navigator.pushNamed(context, Routes.chooseTypeRoute);
+
+                                                 },
+                                                 style: ElevatedButton.styleFrom(
+                                                     backgroundColor: Colors.green
+                                                 ),
+                                               ),
+                                             ),
+                                           ],
+                                         ),
+                                       );
+                                     },
+                                   );
+                                 },
+                                 child: Row(
+                                   children: [
+                                     Image.asset(
+                                       ImageAssets.logoutIcon,
+                                       width: 20.0,
+                                       height: 20.0,
+                                       fit: BoxFit.cover,
+                                       color: AppColors.primary,
+                                     ),
+                                     SizedBox(width: 10,),
+                                     Text('logout'.tr(),
+                                       style: TextStyle(color: AppColors.primary,fontSize: 13),)
+                                   ],
+                                 ),
+                               ),
+                               SizedBox(height: 20,),
+                               Divider(
+                                 height: 2,
+                                 color: AppColors.unselectedTab,
+                               ),
+                               SizedBox(height: 20,),
+                               //TODO-->DELETE
+                               InkWell(
+                                 onTap: () {
+                                   //todo show dialog
+                                   showDialog(
+                                     context: context,
+                                     builder: (BuildContext context) {
+                                       return Container(
+                                         decoration: BoxDecoration(
+                                           borderRadius: BorderRadius.circular(10),
+                                           border: Border.all(color: Colors.orange,width: 2)
+                                         ),
+                                         child: AlertDialog(
+                                          // title: Text('Dialog Title'),
+                                           content: Text('delete_your_account'.tr(),
+                                             textAlign: TextAlign.center,
+                                             style: TextStyle(color: Colors.orange),
+                                           ),
+                                           actions: <Widget>[
+
+                                                SizedBox(
+                                                  width:125,
+                                                  child: ElevatedButton(
+                                                   child: Text('cancel'.tr()),
+                                                   onPressed: () {
+                                                     Navigator.of(context).pop();
+                                                   },
+                                                   style: ElevatedButton.styleFrom(
+                                                     backgroundColor: Colors.red
+                                                   ),
+                                               ),
+                                                ),
+
+
+                                                 SizedBox(
+                                                   width:125,
+                                                   child: ElevatedButton(
+                                                     child: Text('ok'.tr()),
+                                                     onPressed: () async {
+                                                   // Do something when the user presses the OK button
+                                                   await cubit.deleteAccount(context);
+
+                                               },
+                                               style: ElevatedButton.styleFrom(
+                                                     backgroundColor: Colors.green
+                                               ),
+                                             ),
+                                                 ),
+                                           ],
+                                         ),
+                                       );
+                                     },
+                                   );
+
+                                 },
+                                 child: Row(
+                                   children: [
+                                     Image.asset(
+                                       ImageAssets.deleteIcon,
+                                       width: 20.0,
+                                       height: 20.0,
+                                       fit: BoxFit.cover,
+                                       color: AppColors.primary,
+                                     ),
+                                     SizedBox(width: 10,),
+                                     Text('delete_account'.tr(),
+                                       style: TextStyle(color: AppColors.primary,fontSize: 13),)
+                                   ],
+                                 ),
+                               ),
+                               SizedBox(height: 20,),
+
                              ],
 
                            ),
@@ -268,6 +420,7 @@ class _ProviderSettingState extends State<ProviderSetting> {
         else{
           return ShowLoadingIndicator();
         }
+
       },
     );
   }

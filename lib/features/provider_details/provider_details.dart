@@ -53,7 +53,7 @@ class _ProviderDetailsState extends State<ProviderDetails> {
                            bottom:50,
                           child: Center(
                             child: ListView(
-                shrinkWrap: true,
+                          shrinkWrap: true,
                               children: [
                                 SizedBox(height: 50,),
                                 Center(

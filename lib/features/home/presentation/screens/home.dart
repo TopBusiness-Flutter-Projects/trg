@@ -29,7 +29,8 @@ class _HomeScreenState extends State<HomeScreen> {
         return Scaffold(
           body: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: ListView(
+            child:
+            ListView(
               shrinkWrap: true,
               children: [
                 SizedBox(

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trj/core/utils/app_colors.dart';
@@ -31,7 +32,7 @@ class _ChooseTypeState extends State<ChooseType> {
                 padding: EdgeInsets.symmetric(horizontal: 18),
                 child: CustomButton(
                   borderRadius: 16,
-                    text: "مقدم خدمة",
+                    text: "service_provider".tr(),
                     color: AppColors.primary,
                     onClick: (){
                       _getStoreUser();
@@ -42,7 +43,7 @@ class _ChooseTypeState extends State<ChooseType> {
                 padding: const EdgeInsets.symmetric(horizontal: 18),
                 child: CustomButton(
                     borderRadius: 16,
-                    text: "عميل",
+                    text: "customer".tr(),
                     color: AppColors.primary,
                     onClick: (){
                       Navigator.pushNamed(context, Routes.homePageScreenRoute,

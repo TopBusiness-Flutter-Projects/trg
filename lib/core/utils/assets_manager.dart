@@ -31,6 +31,8 @@ class ImageAssets {
   static const String subjectIcon = '$iconsPath/books.svg';
   static const String yearsExperienceIcon = '$iconsPath/years_experience.png';
   static const String attatchIcon = '$iconsPath/attatch.png';
+  static const String deleteIcon = '$iconsPath/delete.png';
+  static const String logoutIcon = '$iconsPath/logout.png';
   //*****************************************************************
 static const String profileIcon = "$iconsPath/profile_icon.png";
 static const String translateIcon = "$iconsPath/translate_icon.png";

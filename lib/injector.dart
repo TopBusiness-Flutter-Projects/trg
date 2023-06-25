@@ -57,7 +57,7 @@ Future<void> setup() async {
     () => ProviderDataCubit(),
   );
   serviceLocator.registerFactory(
-    () => ProviderSettingCubit(),
+    () => ProviderSettingCubit(serviceLocator()),
   );
   serviceLocator.registerFactory(
     () => ContactUsCubit(serviceLocator()),

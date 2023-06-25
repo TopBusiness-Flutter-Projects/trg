@@ -543,8 +543,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 child: Row(
                                   children: [
                                     Image.asset(ImageAssets.attatchIcon),
-                                    SizedBox(width: 20,),
-                                    Text("attachCertificate").tr(),
+                                    SizedBox(width: 10,),
+                                    Text("attachCertificate".tr(),),
 
                                   ],
                                 ),
