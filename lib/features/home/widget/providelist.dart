@@ -75,14 +75,26 @@ class _ProviderListState extends State<ProviderList> {
                                   child: Padding(
                                     padding:  EdgeInsets.only(top: 30,right: 40,left: 20),
                                     child:
-                                    Text(
-                                      providerModel.aboutMe,
-                                      maxLines: 2,
+                                    Column(
+                                      children: [
+                                        Text(
+                                          providerModel.experience,
+                                          maxLines: 2,
 
-                                      style:
+                                          style:
                                           TextStyle(fontSize: 14, color: AppColors.gray8,
-                                            height: 2
-                                         ),
+                                              height: 2
+                                          ),
+                                        ), Text(
+                                          providerModel.previousExperience,
+                                          maxLines: 2,
+
+                                          style:
+                                          TextStyle(fontSize: 14, color: AppColors.gray8,
+                                              height: 2
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),

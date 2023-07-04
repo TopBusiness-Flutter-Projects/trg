@@ -105,15 +105,27 @@ class _ProviderListState extends State<ProviderList> {
                               borderRadius: BorderRadius.all(Radius.circular(16))
                             ),
                             child:   Center(
-                            child: Text(
-                        providerModel.name,
+                            child:   Column(
+                              children: [
+                                Text(
+                                  providerModel.experience,
+                                  maxLines: 2,
 
+                                  style:
+                                  TextStyle(fontSize: 14, color: AppColors.gray8,
+                                      height: 2
+                                  ),
+                                ), Text(
+                                  providerModel.previousExperience,
+                                  maxLines: 2,
 
-                        style:
-                        TextStyle(fontSize: 14, color: AppColors.white,
-
-                        ),
-                      ),
+                                  style:
+                                  TextStyle(fontSize: 14, color: AppColors.gray8,
+                                      height: 2
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),)),
                       Positioned(
                           top: 0,
