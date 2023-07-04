@@ -70,12 +70,9 @@ class _ChooseTypeState extends State<ChooseType> {
         );
 
       } else {
-        Navigator.pushNamedAndRemoveUntil(
+        Navigator.pushNamed(
           context,
-          Routes.loginRoute,
-          ModalRoute.withName(
-            Routes.initialRoute,
-          ),
+          Routes.loginRoute
         );
       }
     }

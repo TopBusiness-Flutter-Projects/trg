@@ -295,7 +295,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         borderRadius: BorderRadius.circular(16.0),
                         borderSide: BorderSide(color: AppColors.primary),
                       ),
-                      prefixIcon: Image.asset(ImageAssets.yearsExperienceIcon),
+                      prefixIcon: Icon(Icons.pin_drop),
                       hintText: 'address'.tr(),
                       hintStyle: TextStyle(
                           color: AppColors.gray1, fontSize: 14.0)),
