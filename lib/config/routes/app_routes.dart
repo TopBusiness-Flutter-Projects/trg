@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:trj/features/choose_translation_type/screens/choose_translation_type.dart';
 import 'package:trj/features/code_verify/screens/code_verify.dart';
 import 'package:trj/features/contact%20us/presentation/screens/contact_us.dart';
 import 'package:trj/features/forgot_password/screens/forgot_password.dart';
@@ -11,6 +12,7 @@ import 'package:trj/features/splash/presentation/screens/splash_screen.dart';
 
 import '../../core/utils/app_strings.dart';
 import '../../features/NavigationProviderBottom/screens/navigation_provider_bottom.dart';
+import '../../features/choose_service_type/screens/choose_service_type.dart';
 import '../../features/filter_providers/presentation/screens/provider_filter.dart';
 import '../../features/navigation_bottom/screens/navigation_bottom.dart';
 import '../../features/onboarding/screens/onboarding_screen.dart';
@@ -28,6 +30,8 @@ class Routes {
   static const String paperexamRegisterRoute = '/paperexamRegister';
   static const String paperdetialsexamRegisterRoute = '/paperdetailsexamRegister';
   static const String homePageScreenRoute = '/homePageScreen';
+  static const String translateTypeScreenRoute = '/translateTypeScreen';
+  static const String serviceTypeScreenRoute = '/serviceTypeScreen';
   static const String providerhomePageScreenRoute = '/providerhomePageScreen';
   static const String newPasswordScreenRoute = '/newPasswordScreen';
   static const String monthplanPageScreenRoute = '/monthplanPageScreen';
@@ -53,6 +57,12 @@ class AppRoutes {
         );
       case Routes.chooseTypeRoute:
         return MaterialPageRoute(builder: (context) => const ChooseType(),
+        );
+        case Routes.serviceTypeScreenRoute:
+        return MaterialPageRoute(builder: (context) =>  ChooseServiceType(),
+        );
+        case Routes.translateTypeScreenRoute:
+        return MaterialPageRoute(builder: (context) =>  ChooseTranslationType(),
         );
         case Routes.providerFilterRoute:
         return MaterialPageRoute(builder: (context) => const ProviderFilterScreen(),

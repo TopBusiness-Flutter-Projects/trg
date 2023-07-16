@@ -38,7 +38,9 @@ class _ProviderListState extends State<ProviderList> {
             onRefresh: () async{
               cubit.getProvidersHome();
             },
-            child: ListView.builder(
+            child:
+            cubit.ProvidersList.isNotEmpty?
+            ListView.builder(
               shrinkWrap: true,
               itemCount: cubit.ProvidersList.length,
               physics: NeverScrollableScrollPhysics(),
@@ -56,7 +58,7 @@ class _ProviderListState extends State<ProviderList> {
                     );
                   },
                   child: Container(
-                    height: 130,
+                    height: 160,
                     child: Stack(
                       children: [
                         Positioned(
@@ -77,16 +79,30 @@ class _ProviderListState extends State<ProviderList> {
                                     child:
                                     Column(
                                       children: [
-                                        Text(
-                                          providerModel.experience,
+                                        Visibility(
+                                          visible: cubit.servicetype==1?false:true,
+                                          child: Text(
+                                          cubit.selectedIndividualType.toString(),
+                                            maxLines: 2,
+
+                                            style:
+                                            TextStyle(fontSize: 14, color: AppColors.gray8,
+                                                height: 2
+                                            ),
+                                          ),
+                                        ), Text(
+                                          providerModel.previousExperience??'',
+
                                           maxLines: 2,
 
                                           style:
                                           TextStyle(fontSize: 14, color: AppColors.gray8,
                                               height: 2
                                           ),
-                                        ), Text(
-                                          providerModel.previousExperience,
+                                        ),
+                                        Text(
+                                          providerModel.experience??'',
+
                                           maxLines: 2,
 
                                           style:
@@ -138,7 +154,11 @@ class _ProviderListState extends State<ProviderList> {
                   ),
                 );
               },
-            ),
+            ):
+               EmptyDataWidget(
+          text: "no_data".tr(),
+        imagePath: ImageAssets.jobIcon,
+        ),
           );
         }
       },

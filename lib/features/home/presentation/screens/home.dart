@@ -29,8 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
         return Scaffold(
           body: Padding(
             padding: const EdgeInsets.all(8.0),
-            child:
-            ListView(
+            child: ListView(
               shrinkWrap: true,
               children: [
                 SizedBox(
@@ -69,19 +68,49 @@ class _HomeScreenState extends State<HomeScreen> {
                 Row(
                   children: [
                     Expanded(child: Cities()),
-                    Expanded(child: ServicesType()),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Expanded(child: ProviderType()),
                     Visibility(
-                        visible: cubit.selectedProviderType == 'individual'.tr()
-                            ? true
-                            : false,
-                        child: Expanded(child: IndividualType())),
+                        visible: cubit.servicetype == 1 ? true : false,
+                        child: Expanded(child: ServicesType())),
                   ],
                 ),
+                Visibility(
+                    visible: cubit.servicetype == 1 ? false : true,
+                    child: Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Container(
+                        height: 50,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(16)),
+                            border: Border.all(color: AppColors.gray8)),
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 32.0),
+                            child: Text(
+                              cubit.servicetype == 2
+                                  ? "content_writer".tr()
+                                  : "lang_edit".tr(),
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  color: AppColors.black,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ),
+                    )),
+                // IndividualType(),
+                //   Row(
+                //     children: [
+                //       Expanded(child: ProviderType()),
+                //       // Visibility(
+                //       //     visible: cubit.selectedProviderType == 'individual'.tr()
+                //       //         ? true
+                //       //         : false,
+                //       //     child: Expanded(child: IndividualType())),
+                //     ],
+                //   ),
                 SliderData(),
                 SizedBox(
                   height: 20,

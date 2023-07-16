@@ -11,6 +11,8 @@ import '../../../core/remote/service.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
+  int? servicetype;
+
   HomeCubit(this.api) : super(HomeInitial()){
     getSliderHome();
     getProvidersHome();
@@ -52,6 +54,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   void changeProviderType(String? value) {
     selectedProviderType=value;
+
     getProvidersHome();
 
     emit(ProvidersHomeServiceTypeLoaded());
@@ -83,6 +86,8 @@ class HomeCubit extends Cubit<HomeState> {
   List<SliderModel> sliderList = [];
 
   getProvidersHome() async {
+    print("ddldlldld0");
+    ProvidersList.clear();
     emit(ProvidersHomeLoading());
     final response = await api.getProvidersProviderFilter("",selectedProviderType==null?0: (selectedProviderType == "individual".tr()
         ? 2
@@ -93,7 +98,7 @@ class HomeCubit extends Cubit<HomeState> {
     response.fold(
           (l) => emit(ProvidersHomeError()),
           (r) {
-        ProvidersList = r.data!;
+        ProvidersList = r.data;
         emit(ProvidersHomeLoaded());
       },
     );
@@ -108,5 +113,10 @@ class HomeCubit extends Cubit<HomeState> {
         emit(ProvidersHomeLoaded());
       },
     );
+  }
+
+  void setserviceType(int i) {
+    servicetype=i;
+    emit(ProvidersHomeServiceTypeLoaded());
   }
 }
