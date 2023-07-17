@@ -87,7 +87,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   getProvidersHome() async {
   //  print("ddldlldld0");
-    print(selectedIndividualType);
+   // print(selectedIndividualType);
     ProvidersList.clear();
     emit(ProvidersHomeLoading());
     final response = await api.getProvidersProviderFilter("",selectedProviderType==null?0: (selectedProviderType == "individual".tr()
