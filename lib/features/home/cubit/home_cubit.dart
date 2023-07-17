@@ -15,7 +15,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   HomeCubit(this.api) : super(HomeInitial()){
     getSliderHome();
-    getProvidersHome();
+   // getProvidersHome();
     getCities();
     getServiceType();
   }
@@ -26,7 +26,7 @@ class HomeCubit extends Cubit<HomeState> {
     response.fold(
           (l) => emit(ProvidersHomeCitiesError()),
           (r) {
-        cities = r.data!;
+        cities = r.data;
         emit(ProvidersHomeCitiesLoaded());
       },
     );
@@ -55,23 +55,23 @@ class HomeCubit extends Cubit<HomeState> {
   void changeProviderType(String? value) {
     selectedProviderType=value;
 
-    getProvidersHome();
-
-    emit(ProvidersHomeServiceTypeLoaded());
-
+    emit(ProvidersHomeLoading());
   }
 
   void changeServideType(ServicesTypeModel? value) {
     selectedServiceType=value;
     getProvidersHome();
-    emit(ProvidersHomeServiceTypeLoaded());
+    emit(ProvidersHomeLoading());
   }
 
   void changeIndividualType(String? value) {
     selectedIndividualType=value;
-    getProvidersHome();
 
-    emit(ProvidersHomeServiceTypeLoaded());
+
+    emit(ProvidersHomeLoading());
+  if(servicetype==1){
+    getProvidersHome();
+  }
   }
   CitiesModel? selectedCity;
   String? selectedProviderType;
@@ -86,7 +86,8 @@ class HomeCubit extends Cubit<HomeState> {
   List<SliderModel> sliderList = [];
 
   getProvidersHome() async {
-    print("ddldlldld0");
+  //  print("ddldlldld0");
+    print(selectedIndividualType);
     ProvidersList.clear();
     emit(ProvidersHomeLoading());
     final response = await api.getProvidersProviderFilter("",selectedProviderType==null?0: (selectedProviderType == "individual".tr()
@@ -115,8 +116,14 @@ class HomeCubit extends Cubit<HomeState> {
     );
   }
 
-  void setserviceType(int i) {
+  void setserviceType(int i,String? providerType,String? IndividualType,CitiesModel? value) {
     servicetype=i;
-    emit(ProvidersHomeServiceTypeLoaded());
+    selectedProviderType=providerType;
+    selectedCity=value;
+    selectedIndividualType=IndividualType;
+    emit(ProvidersHomeLoading());
+
+    getProvidersHome();
   }
+
 }

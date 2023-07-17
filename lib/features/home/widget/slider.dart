@@ -7,6 +7,7 @@ import '../../../core/model/provider_model.dart';
 import '../../../core/utils/assets_manager.dart';
 import '../../../core/widgets/circle_network_image.dart';
 import '../../../core/widgets/empty_data_widget.dart';
+import '../../../core/widgets/no_data_widget.dart';
 import '../../../core/widgets/show_loading_indicator.dart';
 import '../cubit/home_cubit.dart';
 import 'banner.dart';
@@ -22,20 +23,24 @@ class _SliderDataState extends State<SliderData> {
   @override
   Widget build(BuildContext context) {
     HomeCubit cubit = context.read<HomeCubit>();
-    return BlocBuilder<HomeCubit, HomeState>(
-      builder: (context, state) {
-        if (state is SliderHomeLoading) {
-          return ShowLoadingIndicator();
-        } else if (state is SliderHomeError) {
-          // return EmptyDataWidget();
-          return EmptyDataWidget(
-            text: "no_data".tr(),
-            imagePath: ImageAssets.jobIcon,
-          );
-        } else {
-          return BannerWidget(sliderData: cubit.sliderList,isDotes: true,);
-        }
-      },
+    return Container(
+      height: MediaQuery.of(context).size.width/1.5,
+      child: BlocBuilder<HomeCubit, HomeState>(
+        builder: (context, state) {
+          if (state is SliderHomeLoading) {
+            return ShowLoadingIndicator();
+          } else if (state is SliderHomeError) {
+            // return EmptyDataWidget();
+            return    NoDataWidget(onclick: () {
+                  cubit.getSliderHome();
+                },
+                  title: 'no_data'.tr(),
+                );
+          } else {
+            return BannerWidget(sliderData: cubit.sliderList,isDotes: true,);
+          }
+        },
+      ),
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart' ;
 import 'package:trj/core/utils/app_colors.dart';
+import 'package:trj/core/widgets/no_data_widget.dart';
 
 import '../../../core/model/provider_model.dart';
 import '../../../core/utils/assets_manager.dart';
@@ -26,12 +27,15 @@ class _ProviderListState extends State<ProviderList> {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         if (state is ProvidersHomeLoading) {
-          return ShowLoadingIndicator();
+          return Center(child: ShowLoadingIndicator());
         } else if (state is ProvidersHomeError) {
           // return EmptyDataWidget();
-          return EmptyDataWidget(
-            text: "no_data".tr(),
-            imagePath: ImageAssets.jobIcon,
+          return Center(
+            child:    NoDataWidget(onclick: () {
+                  cubit.getProvidersHome(); 
+                },
+                  title: 'no_data'.tr(),
+                ),
           );
         } else {
           return RefreshIndicator(
@@ -82,7 +86,7 @@ class _ProviderListState extends State<ProviderList> {
                                         Visibility(
                                           visible: cubit.servicetype==1?false:true,
                                           child: Text(
-                                          cubit.selectedIndividualType.toString(),
+                                              cubit.selectedIndividualType!=null? cubit.selectedIndividualType.toString():'',
                                             maxLines: 2,
 
                                             style:
@@ -155,10 +159,15 @@ class _ProviderListState extends State<ProviderList> {
                 );
               },
             ):
-               EmptyDataWidget(
-          text: "no_data".tr(),
-        imagePath: ImageAssets.jobIcon,
-        ),
+                NoDataWidget(onclick: () {
+                  cubit.getProvidersHome(); 
+                },
+                  title: 'no_data'.tr(),
+                )
+        //        EmptyDataWidget(
+        //   text: "no_data".tr(),
+        // imagePath: ImageAssets.jobIcon,
+        // ),
           );
         }
       },

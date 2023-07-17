@@ -37,9 +37,9 @@ class _ChooseServiceTypeState extends State<ChooseServiceType> {
                     text: "translate".tr(),
                     color: AppColors.primary,
                     onClick: (){
-                      context.read<HomeCubit>().changeCity(null);
-                    context.read<HomeCubit>().setserviceType(1);
-                    context.read<HomeCubit>().changeIndividualType(null);
+                      context.read<HomeCubit>().setserviceType(1,null,null,null);
+
+                 //   context.read<HomeCubit>().changeIndividualType(null);
 
                     Navigator.pushNamed(context, Routes.translateTypeScreenRoute);
 
@@ -53,10 +53,9 @@ class _ChooseServiceTypeState extends State<ChooseServiceType> {
                     text: "content_writer".tr(),
                     color: AppColors.primary,
                     onClick: (){
-                      context.read<HomeCubit>().changeCity(null);
-                      context.read<HomeCubit>().changeProviderType("individual".tr());
-                      context.read<HomeCubit>().setserviceType(2);
-                      context.read<HomeCubit>().changeIndividualType("content_writer".tr());
+                      //context.read<HomeCubit>().changeCity(null);
+                      context.read<HomeCubit>().setserviceType(2,"individual".tr(),"content_writer".tr(),null);
+
                       Navigator.pushNamed(context, Routes.homePageScreenRoute,
                      );
                     }),
@@ -69,10 +68,9 @@ class _ChooseServiceTypeState extends State<ChooseServiceType> {
                     text: "lang_edit".tr(),
                     color: AppColors.primary,
                     onClick: (){
-                      context.read<HomeCubit>().changeCity(null);
-                      context.read<HomeCubit>().changeProviderType("individual".tr());
-                      context.read<HomeCubit>().changeIndividualType("lang_edit".tr());
-                      context.read<HomeCubit>().setserviceType(3);
+                      context.read<HomeCubit>().setserviceType(3,"individual".tr(),"lang_edit".tr(),null);
+
+                    //  context.read<HomeCubit>().changeCity(null);
 
 
                       Navigator.pushNamed(context, Routes.homePageScreenRoute,

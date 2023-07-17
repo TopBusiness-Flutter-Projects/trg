@@ -24,7 +24,7 @@ class _BannerWidgetState extends State<BannerWidget> {
   @override
   Widget build(BuildContext context) {
     if (widget.sliderData.isEmpty) {
-      return Image.asset(ImageAssets.loginLogoImage,height: 150,width:  MediaQuery.of(context).size.width * 0.88,);
+      return Image.asset(ImageAssets.loginLogoImage,height:  MediaQuery.of(context).size.width/1.5,width:  MediaQuery.of(context).size.width * 0.88,);
     } else {
       return Column(
         children: [
