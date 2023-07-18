@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trj/app_bloc_observer.dart';
@@ -28,7 +27,7 @@ Future<void> main() async {
   // );
 
   // await PushNotificationService.instance.initialise();
-  await FlutterWindowManager.clearFlags(FlutterWindowManager.FLAG_SECURE);
+  //await FlutterWindowManager.clearFlags(FlutterWindowManager.FLAG_SECURE);
   // await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE)
   //     .then((value) {
   //   print('************************************************');
@@ -73,75 +72,54 @@ FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 
 late AndroidNotificationChannel channel;
 
-Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
-  print("Handling a background message:");
+// Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+//   // await Firebase.initializeApp(
+//   //   options: DefaultFirebaseOptions.currentPlatform,
+//   // );
+ // print("Handling a background message:");
 
-  AndroidInitializationSettings initializationSettingsAndroid =
-      AndroidInitializationSettings('@mipmap/ic_launcher');
-  final DarwinInitializationSettings initializationSettingsDarwin =
-      DarwinInitializationSettings(
-          onDidReceiveLocalNotification: await ondidnotification);
-  final LinuxInitializationSettings initializationSettingsLinux =
-      LinuxInitializationSettings(defaultActionName: 'Open notification');
-  final InitializationSettings initializationSettings = InitializationSettings(
-      android: initializationSettingsAndroid,
-      iOS: initializationSettingsDarwin,
-      linux: initializationSettingsLinux);
-  flutterLocalNotificationsPlugin.initialize(
-    initializationSettings,
-    onDidReceiveNotificationResponse: notificationTapBackground,
-  );
 
-  if (message.data.isNotEmpty) {
-    checkData(message);
 
-    print("Handling a background message: ${message.data}");
-  }
-}
-
-void showNotification(RemoteMessage message) async {
-  String paylod = "";
-  if (message.data["note_type"] == "chat") {
-    paylod = message.data['room'] + message.data['note_type'];
-  } else {
-    message.data['note_type'];
-  }
-  channel = const AndroidNotificationChannel(
-    'high_importance_channel', // id
-    'High Importance Notifications', // title
-    importance: Importance.high,
-  );
-  //UserModel userModel = await Preferences.instance.getUserModel();
-
-  await flutterLocalNotificationsPlugin.show(
-      message.data.hashCode,
-      message.data['title'],
-      message.data['body'],
-      payload: paylod,
-      NotificationDetails(
-          android: AndroidNotificationDetails(channel.id, channel.name,
-              channelDescription: channel.description,
-              importance: Importance.max,
-              icon: '@mipmap/ic_launcher')));
-}
-
-void checkData(RemoteMessage message) {
-  if (message.data['note_type'].toString().contains("chat")) {
-    showNotification(message);
-  } else {
-    showNotification(message);
-  }
-}
-
-Future ondidnotification(
-    int id, String? title, String? body, String? payload) async {
-  print("object");
-  if (payload!.contains("chat")) {
-  } else if (payload == "service_request") {}
-}
+// void showNotification(RemoteMessage message) async {
+//   String paylod = "";
+//   if (message.data["note_type"] == "chat") {
+//     paylod = message.data['room'] + message.data['note_type'];
+//   } else {
+//     message.data['note_type'];
+//   }
+//   channel = const AndroidNotificationChannel(
+//     'high_importance_channel', // id
+//     'High Importance Notifications', // title
+//     importance: Importance.high,
+//   );
+//   //UserModel userModel = await Preferences.instance.getUserModel();
+//
+//   await flutterLocalNotificationsPlugin.show(
+//       message.data.hashCode,
+//       message.data['title'],
+//       message.data['body'],
+//       payload: paylod,
+//       NotificationDetails(
+//           android: AndroidNotificationDetails(channel.id, channel.name,
+//               channelDescription: channel.description,
+//               importance: Importance.max,
+//               icon: '@mipmap/ic_launcher')));
+// }
+//
+// void checkData(RemoteMessage message) {
+//   if (message.data['note_type'].toString().contains("chat")) {
+//     showNotification(message);
+//   } else {
+//     showNotification(message);
+//   }
+// }
+//
+// Future ondidnotification(
+//     int id, String? title, String? body, String? payload) async {
+//   print("object");
+//   if (payload!.contains("chat")) {
+//   } else if (payload == "service_request") {}
+// }
 
 Future notificationTapBackground(NotificationResponse details) async {
   print('notification payload: ${details.payload}');
