@@ -16,7 +16,7 @@ class ProviderFilterCubit extends Cubit<ProviderFilterState> {
 
   getProvidersProviderFilter(int cityId,int serviceTypeId,int providertypeId,String search_key, int individualtype) async {
     emit(ProvidersProviderFilterLoading());
-    final response = await api.getProvidersProviderFilter(search_key,providertypeId,cityId,serviceTypeId,individualtype);
+    final response = await api.getProvidersProviderFilter(search_key,providertypeId,cityId,serviceTypeId,individualtype,0);
     response.fold(
           (l) => emit(ProvidersProviderFilterError()),
           (r) {

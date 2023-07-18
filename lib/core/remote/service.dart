@@ -13,6 +13,7 @@ import '../model/cities_data_model.dart';
 import '../model/delete_model.dart';
 import '../model/provider_data_model.dart';
 import '../model/slider_data_model.dart';
+import '../model/translation_language.dart';
 import '../model/user_model.dart';
 import '../preferences/preferences.dart';
 
@@ -35,7 +36,7 @@ class ServiceApi {
       return Left(ServerFailure());
     }
   }
-  Future<Either<Failure, ProviderDataModel>> getProvidersProviderFilter(String search_key,int providerType,int cityId,int servideTypeId,int person_type
+  Future<Either<Failure, ProviderDataModel>> getProvidersProviderFilter(String search_key,int providerType,int cityId,int servideTypeId,int person_type,int translation_id
      ) async {
     // String lan = await Preferences.in!stance.getSavedLang();
     try {
@@ -44,6 +45,7 @@ class ServiceApi {
         queryParameters: {
           "city_id":cityId!=0? cityId:"",
           "search_key":search_key,
+          "language_id":translation_id!=0?translation_id:"",
           "translation_type_id":servideTypeId!=0?servideTypeId:"",
           "provider_type":providerType!=0?providerType:"",
           "person_type":person_type!=0?person_type:""
@@ -95,6 +97,20 @@ class ServiceApi {
       );
       print(response);
       return Right(ServicesTypeDataModel.fromJson(response));
+    } on ServerException {
+      return Left(ServerFailure());
+    }
+  }
+  Future<Either<Failure, TranslationLanguageModel>> getTranslationLanguge(
+     ) async {
+    // String lan = await Preferences.in!stance.getSavedLang();
+    try {
+      final response = await dio.get(
+        EndPoints.translationLanguageListUrl ,
+
+      );
+      print(response);
+      return Right(TranslationLanguageModel.fromJson(response));
     } on ServerException {
       return Left(ServerFailure());
     }

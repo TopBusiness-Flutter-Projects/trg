@@ -11,6 +11,7 @@ import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/assets_manager.dart';
 import '../widgets/cities.dart';
 import '../widgets/services_type.dart';
+import '../widgets/translation_language.dart';
 
 enum ServiceProvider { office, individual }
 enum IndividualProvider { writer, VerbalEditing }
@@ -182,6 +183,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       horizontal: 20,
                     ),
                     child: ServicesType(),
+                  ),
+                  const SizedBox(
+                    height: 26,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 20,
+                    ),
+                    child: TranslationLanguages(),
                   ),
                   const SizedBox(
                     height: 26,

@@ -12,6 +12,7 @@ import 'package:meta/meta.dart';
 import '../../../config/routes/app_routes.dart';
 import '../../../core/model/cities_model.dart';
 import '../../../core/model/service_type_model.dart';
+import '../../../core/model/translation_language.dart';
 import '../../../core/preferences/preferences.dart';
 import '../../../core/remote/service.dart';
 import '../../../core/utils/appwidget.dart';
@@ -24,6 +25,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   final ServiceApi api;
   CitiesModel? selectedCity;
   ServicesTypeModel? selectedServiceType;
+  TranslationLanguage? selectlanguge;
   RegisterModel registerModel = RegisterModel();
   TextEditingController emailControl = TextEditingController();
   TextEditingController passwordControl = TextEditingController();
@@ -41,6 +43,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   bool isHidden = true;
   List<CitiesModel> cities = [];
   List<ServicesTypeModel> serviceTypeList = [];
+  List<TranslationLanguage> translationList = [];
 
   String imageType = '';
 
@@ -49,6 +52,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit(this.api) : super(RegisterInitial()) {
     getCities();
     getServiceType();
+    getTranslationLanguage();
     getUserData();
   }
 
@@ -152,6 +156,26 @@ class RegisterCubit extends Cubit<RegisterState> {
       },
     );
   }
+  getTranslationLanguage() async {
+    emit(ProviderRegisterTranslationLangugeLoading());
+    final response = await api.getTranslationLanguge();
+    response.fold(
+      (l) => emit(ProviderRegisterTranslationLangugeError()),
+      (r) {
+        translationList.clear();
+        translationList = r.data!;
+        if (userModel!.data != null) {
+          for (int i = 0; i < translationList.length; i++) {
+            if (translationList.elementAt(i).id ==
+                userModel!.data!.user.translation_id) {
+              changeTranslationLanguge(translationList.elementAt(i));
+            }
+          }
+        }
+        emit(ProviderRegisterTranslationLangugeLoaded());
+      },
+    );
+  }
 
   void changeCity(CitiesModel? value) {
     selectedCity = value;
@@ -248,5 +272,12 @@ class RegisterCubit extends Cubit<RegisterState> {
         }
       },
     );
+  }
+
+  void changeTranslationLanguge(TranslationLanguage? value) {
+    selectlanguge=value;
+    registerModel.translation_id=value!.id;
+
+    emit(ProviderRegisterTranslationLangugeLoaded());
   }
 }

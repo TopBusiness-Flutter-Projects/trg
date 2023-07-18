@@ -8,6 +8,7 @@ class RegisterModel {
   String name = '';
   int service_id = 0;
   int city_id = 0;
+  int translation_id = 0;
   String phone = '';
   String previousExperience = '';
   String aboutMe = '';
@@ -25,6 +26,7 @@ class RegisterModel {
         password.length >= 6) )&&
         name.isNotEmpty &&
         service_id != 0 &&
+        translation_id!=0&&
         city_id != 0 &&
         phone.isNotEmpty &&
         previousExperience.isNotEmpty &&
@@ -52,6 +54,7 @@ class RegisterModel {
         "provider_type": providerType,
         "city_id": city_id,
         "translation_type_id": service_id,
+        "language_id": translation_id,
         "address":address,
         "about_me": aboutMe,
         "experience": experienceYears,
@@ -76,6 +79,7 @@ class RegisterModel {
         "password": password,
         "city_id": city_id,
         "translation_type_id": service_id,
+        "language_id": translation_id,
         "address":address,
         "about_me": aboutMe,
         "experience": experienceYears,

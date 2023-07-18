@@ -15,3 +15,6 @@ class ProvidersHomeCitiesError extends HomeState {}
 class ProvidersHomeServiceTypeLoading extends HomeState {}
 class ProvidersHomeServiceTypeLoaded extends HomeState {}
 class ProvidersHomeServiceTypeError extends HomeState {}
+class ProviderTranslationLangugeError extends HomeState {}
+class ProviderTranslationLangugeLoading extends HomeState {}
+class ProviderTranslationLangugeLoaded extends HomeState {}

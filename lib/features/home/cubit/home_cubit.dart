@@ -6,15 +6,18 @@ import '../../../core/model/cities_model.dart';
 import '../../../core/model/provider_model.dart';
 import '../../../core/model/service_type_model.dart';
 import '../../../core/model/slider_model.dart';
+import '../../../core/model/translation_language.dart';
 import '../../../core/remote/service.dart';
 
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   int? servicetype;
-
+  TranslationLanguage? selectlanguge;
+  List<TranslationLanguage> translationList = [];
   HomeCubit(this.api) : super(HomeInitial()){
     getSliderHome();
+    getTranslationLanguage();
    // getProvidersHome();
     getCities();
     getServiceType();
@@ -95,7 +98,7 @@ class HomeCubit extends Cubit<HomeState> {
         : 1),selectedCity==null?0: selectedCity!.id,selectedServiceType==null?0: selectedServiceType!.id,
        selectedIndividualType==null?0:(selectedIndividualType == "content_writer".tr()
             ? 2
-            : 1));
+            : 1), selectedIndividualType==null?0:selectlanguge!.id);
     response.fold(
           (l) => emit(ProvidersHomeError()),
           (r) {
@@ -121,9 +124,27 @@ class HomeCubit extends Cubit<HomeState> {
     selectedProviderType=providerType;
     selectedCity=value;
     selectedIndividualType=IndividualType;
+    selectlanguge=null;
     emit(ProvidersHomeLoading());
 
     getProvidersHome();
+  }
+  void changeTranslationLanguge(TranslationLanguage? value) {
+    selectlanguge=value;
+    getProvidersHome();
+    emit(ProviderTranslationLangugeLoaded());
+  }
+  getTranslationLanguage() async {
+    emit(ProviderTranslationLangugeLoading());
+    final response = await api.getTranslationLanguge();
+    response.fold(
+          (l) => emit(ProviderTranslationLangugeError()),
+          (r) {
+        translationList.clear();
+        translationList = r.data!;
+        emit(ProviderTranslationLangugeLoaded());
+      },
+    );
   }
 
 }

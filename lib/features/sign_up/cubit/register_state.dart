@@ -17,3 +17,6 @@ class RegisterFailure extends RegisterState {}
 class OnLoginVaildFaild extends RegisterState {}
 class PhotoPicked extends RegisterState {}
 class OnRegisterData extends RegisterState {}
+class ProviderRegisterTranslationLangugeLoaded extends RegisterState {}
+class ProviderRegisterTranslationLangugeError extends RegisterState {}
+class ProviderRegisterTranslationLangugeLoading extends RegisterState {}

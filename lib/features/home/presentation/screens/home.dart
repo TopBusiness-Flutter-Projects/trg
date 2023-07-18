@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trj/features/home/widget/translation_language.dart';
 
 import '../../../../config/routes/app_routes.dart';
 import '../../../../core/utils/app_colors.dart';
@@ -72,6 +73,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         visible: cubit.servicetype == 1 ? true : false,
                         child: Expanded(child: ServicesType())),
                   ],
+                ),
+                Visibility(
+                    visible: cubit.servicetype == 1 ? true : false,
+                    child: TranslationLanguages()),
+                SizedBox(
+                  height: 20,
                 ),
                 Visibility(
                     visible: cubit.servicetype == 1 ? false : true,

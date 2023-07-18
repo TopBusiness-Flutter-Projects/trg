@@ -16,7 +16,7 @@ getProvidersSearch("");
 
   getProvidersSearch(String search_key) async {
     emit(ProvidersSearchLoading());
-    final response = await api.getProvidersProviderFilter(search_key,0,0,0,0);
+    final response = await api.getProvidersProviderFilter(search_key,0,0,0,0,0);
     response.fold(
           (l) => emit(ProvidersSearchError()),
           (r) {
