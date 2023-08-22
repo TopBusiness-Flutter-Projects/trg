@@ -192,9 +192,9 @@ class RegisterCubit extends Cubit<RegisterState> {
     emit(ProviderRegisterServiceTypeLoaded());
   }
 
-  void changeServiceProviderType(IndividualProvider? value) {
+  void changeServiceProviderType(ServiceProvider? value) {
     //selectedProviderType=value;
-    selectedIndividualProvider = value!;
+    selectedServiceProvider = value!;
     emit(ProviderRegisterTypeLoaded());
   }
 
