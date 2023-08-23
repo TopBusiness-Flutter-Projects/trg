@@ -122,7 +122,7 @@ class HomeCubit extends Cubit<HomeState> {
     );
   }
 
-  void setserviceType(int i,String? providerType,String? IndividualType,CitiesModel? value) {
+  void setserviceType(int i,String? providerType,CitiesModel? value) {
     servicetype=i;
     selectedProviderType=providerType;
     selectedCity=value;

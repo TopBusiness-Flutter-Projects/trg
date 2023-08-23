@@ -607,8 +607,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   ),
                                 )),
                             Visibility(
-                              visible: selectedServiceProvider ==
-                                  ServiceProvider.individual
+                              visible:selectedServiceProvider ==
+                                  ServiceProvider.individual ||
+                                  selectedServiceProvider ==
+                                      ServiceProvider.VerbalEditing ||
+                                  selectedServiceProvider ==
+                                      ServiceProvider.writer
                                   ? true
                                   : false,
                               child: cubit.registerModel.experience_photo_path

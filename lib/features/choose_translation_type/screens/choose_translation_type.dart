@@ -37,7 +37,7 @@ class _ChooseTranslationTypeState extends State<ChooseTranslationType> {
                     text: "office".tr(),
                     color: AppColors.primary,
                     onClick: (){
-                      context.read<HomeCubit>().setserviceType(1,"office".tr(),null,null);
+                      context.read<HomeCubit>().setserviceType(1,"office".tr(),null);
 
 //                      context.read<HomeCubit>().changeCity(null);
                       Navigator.pushNamed(context, Routes.homePageScreenRoute);
@@ -51,7 +51,7 @@ class _ChooseTranslationTypeState extends State<ChooseTranslationType> {
                     text: "individual".tr(),
                     color: AppColors.primary,
                     onClick: (){
-                      context.read<HomeCubit>().setserviceType(1,"individual".tr(),null,null);
+                      context.read<HomeCubit>().setserviceType(1,"individual".tr(),null);
 
                     //  context.read<HomeCubit>().changeCity(null);
 
