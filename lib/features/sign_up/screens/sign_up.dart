@@ -148,7 +148,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     print(value);
                                     if (value != null) {
                                       cubit.registerModel.individualType = 2;
-                                      cubit.registerModel.providerType = 0;
+                                      cubit.registerModel.providerType = 3;
 
                                       cubit.changeServiceProviderType(value);
                                       // setState(() {
@@ -167,7 +167,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     print(value);
                                     if (value != null) {
                                       cubit.registerModel.individualType = 1;
-                                      cubit.registerModel.providerType = 0;
+                                      cubit.registerModel.providerType = 4;
 
                                       cubit.changeServiceProviderType(value);
                                       print(value.toString());

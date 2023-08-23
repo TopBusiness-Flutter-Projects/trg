@@ -86,7 +86,7 @@ class _ProviderListState extends State<ProviderList> {
                                         Visibility(
                                           visible: cubit.servicetype==1?false:true,
                                           child: Text(
-                                              cubit.selectedIndividualType!=null? cubit.selectedIndividualType.toString():'',
+                                              cubit.selectedProviderType!=null? cubit.selectedProviderType.toString():'',
                                             maxLines: 2,
 
                                             style:

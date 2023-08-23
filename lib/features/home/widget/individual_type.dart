@@ -72,7 +72,7 @@ List<String> individualTypes=['content_writer'.tr(),'lang_edit'.tr()];
                   ),
                 ))
                     .toList(),
-                value: cubit.selectedIndividualType,
+                value: cubit.selectedProviderType,
                 onChanged: (value) {
                 cubit.changeIndividualType(value);
                 },

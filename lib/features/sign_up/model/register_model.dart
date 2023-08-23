@@ -37,8 +37,7 @@ class RegisterModel {
         ((providerType == 1 &&
                 commericial_photo_path.isNotEmpty &&
                 location_photo_path.isNotEmpty) ||
-            (providerType == 1 &&
-                individualType != 0 &&
+            ((providerType == 2 ||providerType==3||providerType==4)&&
                 experience_photo_path.isNotEmpty))))) {
       return true;
     }
@@ -59,7 +58,7 @@ class RegisterModel {
         "about_me": aboutMe,
         "experience": experienceYears,
         "previous_experience": previousExperience,
-        "person_type": individualType,
+      //  "person_type": individualType,
         if (location_photo_path.isNotEmpty) ...{
           "location_image": await MultipartFile.fromFile(location_photo_path)
         },

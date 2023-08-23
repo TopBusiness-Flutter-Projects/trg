@@ -68,8 +68,9 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   void changeIndividualType(String? value) {
-    selectedIndividualType=value;
+  //  selectedIndividualType=value;
 
+    selectedProviderType=value;
 
     emit(ProvidersHomeLoading());
   if(servicetype==1){
@@ -83,7 +84,7 @@ class HomeCubit extends Cubit<HomeState> {
   List<CitiesModel> cities = [];
   List<ServicesTypeModel> serviceTypeList = [];
 
-  String? selectedIndividualType;
+// String? selectedIndividualType;
   final ServiceApi api;
   List<ProviderModel> ProvidersList = [];
   List<SliderModel> sliderList = [];
@@ -93,12 +94,14 @@ class HomeCubit extends Cubit<HomeState> {
    // print(selectedIndividualType);
     ProvidersList.clear();
     emit(ProvidersHomeLoading());
-    final response = await api.getProvidersProviderFilter("",selectedProviderType==null?0: (selectedProviderType == "individual".tr()
+    final response = await api.getProvidersProviderFilter("",
+        selectedProviderType==null?0: (selectedProviderType == "individual".tr()
         ? 2
-        : 1),selectedCity==null?0: selectedCity!.id,selectedServiceType==null?0: selectedServiceType!.id,
-       selectedIndividualType==null?0:(selectedIndividualType == "content_writer".tr()
-            ? 2
-            : 1), selectedIndividualType==null?0:selectlanguge!.id);
+        :selectedProviderType == "content_writer".tr()
+            ?3:selectedProviderType == "lang_edit".tr()
+            ?4: 1)
+        ,selectedCity==null?0: selectedCity!.id,selectedServiceType==null?0: selectedServiceType!.id,
+     selectlanguge==null?0:selectlanguge!.id);
     response.fold(
           (l) => emit(ProvidersHomeError()),
           (r) {
@@ -123,7 +126,7 @@ class HomeCubit extends Cubit<HomeState> {
     servicetype=i;
     selectedProviderType=providerType;
     selectedCity=value;
-    selectedIndividualType=IndividualType;
+   // selectedIndividualType=IndividualType;
     selectlanguge=null;
     emit(ProvidersHomeLoading());
 

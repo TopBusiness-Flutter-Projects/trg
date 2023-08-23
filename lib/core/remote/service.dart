@@ -36,7 +36,7 @@ class ServiceApi {
       return Left(ServerFailure());
     }
   }
-  Future<Either<Failure, ProviderDataModel>> getProvidersProviderFilter(String search_key,int providerType,int cityId,int servideTypeId,int person_type,int translation_id
+  Future<Either<Failure, ProviderDataModel>> getProvidersProviderFilter(String search_key,int providerType,int cityId,int servideTypeId,int translation_id
      ) async {
     // String lan = await Preferences.in!stance.getSavedLang();
     try {
@@ -48,7 +48,7 @@ class ServiceApi {
           "language_id":translation_id!=0?translation_id:"",
           "translation_type_id":servideTypeId!=0?servideTypeId:"",
           "provider_type":providerType!=0?providerType:"",
-          "person_type":person_type!=0?person_type:""
+       //   "person_type":person_type!=0?person_type:""
         }
 
       );

@@ -59,11 +59,8 @@ class _EmploymentState extends State<Employment> {
                 SizedBox(
                   height: 20,
                 ),
-                Visibility(
-                    visible: cubit.selectedProviderType == 'individual'.tr()
-                        ? true
-                        : false,
-                    child: IndividualType()),
+
+                   IndividualType(),
                 SizedBox(
                   height: 20,
                 ),
@@ -80,12 +77,10 @@ class _EmploymentState extends State<Employment> {
                           cubit.selectedServiceType!.id,
                           cubit.selectedProviderType == "individual".tr()
                               ? 2
-                              : 1,
+                              :  cubit.selectedProviderType == "content_writer".tr()?3:  cubit.selectedProviderType == "lang_edit".tr()?4: 1,
 
                           "",
-                          cubit.selectedIndividualType == "content_writer".tr()
-                              ? 2
-                              : 1);
+                         );
                       Navigator.pushNamed(context, Routes.providerFilterRoute);
                     },
                   ),
